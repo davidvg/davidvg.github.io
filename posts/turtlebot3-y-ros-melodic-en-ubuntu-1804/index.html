@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Turtlebot3 y ROS Melodic en Ubuntu 18.04 | Muerte por Checklist</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="es" href="../../rss.xml">
+<link rel="canonical" href="https://davidvg.github.io/posts/turtlebot3-y-ros-melodic-en-ubuntu-1804/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="David Vázquez">
+<link rel="prev" href="../turtlebot3/" title="Turtlebot3" type="text/html">
+<meta property="og:site_name" content="Muerte por Checklist">
+<meta property="og:title" content="Turtlebot3 y ROS Melodic en Ubuntu 18.04">
+<meta property="og:url" content="https://davidvg.github.io/posts/turtlebot3-y-ros-melodic-en-ubuntu-1804/">
+<meta property="og:description" content="Al empezar a hacer pruebas con el Turtlebot3 empezaron a aparecer algunos problemas de compatibilidad relacionados con las diferentes versiones de ROS y Ubuntu, que se resumen en:
+
+El código del Turtl">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2019-03-04T17:46:03+01:00">
+<meta property="article:tag" content="ROS">
+<meta property="article:tag" content="turtlebot">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Mostrar navegación</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://davidvg.github.io/">
+
+                <span id="blog-title">Muerte por Checklist</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../../pages/wiki/index.html">Wiki</a>
+                </li>
+<li>
+<a href="../../archive.html">Archivo</a>
+                </li>
+<li>
+<a href="../../categories/">Etiquetas</a>
+                </li>
+<li>
+<a href="../../rss.xml">Canal RSS</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="index.md" id="sourcelink">Código fuente</a>
+    </li>
+
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Turtlebot3 y ROS Melodic en Ubuntu 18.04</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                    David Vázquez
+            </span></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2019-03-04T17:46:03+01:00" itemprop="datePublished" title="2019-03-04">2019-03-04</time></a>
+            </p>
+            
+        <p class="sourceline"><a href="index.md" class="sourcelink">Código fuente</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p>Al empezar a hacer pruebas con el <a href="https://davidvg.github.io/posts/turtlebot3/">Turtlebot3</a> empezaron a aparecer algunos problemas de compatibilidad relacionados con las diferentes versiones de ROS y Ubuntu, que se resumen en:</p>
+<ol>
+<li>El código del Turtlebot3 está escrito para la versión <a href="https://wiki.ros.org/kinetic">Kinetic</a> de ROS.</li>
+<li>Kinetic es compatible con las versiones Wily (15.10) y Xenial (16.04) de Ubuntu.</li>
+<li>En mi ordenador tengo instalado Ubuntu Bionic (18.04), versión para la que Kinetic no es compatible.</li>
+<li>ROS Melodic, la versión que tiene soporte para Ubuntu 18.04, no tiene soporte completo para Turtlebot3 (algunos de los módulos y funciones necesarios para el Turtlebot3 aún no se han portado a Melodic)</li>
+</ol>
+<blockquote>
+<p><strong>TL;DR</strong>: La versión de ROS que puedo instalar “fácilmente” en mi sistema operativo no da soporte completo al Turtlebot3, y a la vez la versión de ROS que da soporte a Turtlebot3 no es compatible con mi sistema operativo. Incompatibilidad en ambos sentidos.</p>
+</blockquote>
+<p>Esto me dejaba varias posibles soluciones:</p>
+<ol>
+<li>Crear una <a href="https://es.wikipedia.org/wiki/M%C3%A1quina_virtual">máquina virtual</a> corriendo Ubuntu 16.04 e instalar ROS Kinetic.</li>
+<li>Usar <a href="https://www.docker.com/">Docker</a> para crear un contenedor con Ubuntu 16.04 e instalar ROS Kinetic.</li>
+<li>Usar una de las imágenes de <a href="https://docs.docker.com/samples/library/ros/">Docker con ROS preinstalado</a> con la versión Kinetic.</li>
+<li>Usar Ubuntu 18.04 y ROS Melodic e ir solucionando los problemas a medida que surjan.</li>
+</ol>
+<p>La máquina virtual la descarté de mano, por ser más práctico usar los contenedores de Docker. Sin embargo, como en los grupos de usuarios de ROS se habla de que todo el código del Turtlebot3 se está portando poco a poco a Melodic, opté por probar con la última opción e ir resolviendo los problemas a medida que se iban <del>amontonando</del> produciendo.</p>
+<p><img alt="Si eso más terde me pongo..." src="../../images/memes/ITcrowd-put-this-with-rest-of-fire.jpg" width="40%"></p>
+<h3>Instalación de módulos no portados a Melodic</h3>
+<p>Instalar los módulos que <a href="https://index.ros.org/packages/#melodic">no estan aún portados</a> resulta más fácil de lo podría pensarse. Aunque no estén disponibles para ROS Melodic, los repositorios de cada uno de ellos están disponibles en GitHub; muchos ya tienen una rama lista para ser integrada en futuras actualizaciones de Melodic, y el resto pueden descargarse y compilarse con las características del sistema que se emplee.
+Los módulos necesarios para hacer funcionar el Turtlebot3 y que no están disponibles en Melodic pero pueden instalarse desde GitHub son:</p>
+<ul>
+<li><code>openslam_gmapping</code></li>
+<li>
+<code>slam_gmapping</code>: módulo de creación de mapas mediante <em>SLAM</em> (<em>Simultaneous Localization and Mapping</em>)</li>
+<li>
+<code>hector_slam</code>, <code>slam_karto</code>: otros métodos de cartografiado utilizados por el Turtlebot.</li>
+<li>
+<code>frontier_exploration</code>: módulo de exploración de mapas.</li>
+<li>
+<code>teleop_twist_joy</code>: utilización de <em>joystick</em> para controlar el robot.</li>
+</ul>
+<p>Estos paquetes se pueden descargar o clonar en el directorio <code>src</code> del proyecto y compilar con <code>catkin_make</code> o <code>catkin build</code>. El resto de paquetes disponibles para Melodic se instalan mediante el gestor de software de Ubuntu, o mediante <code>apt-get</code> o similar.</p>
+<h3>Mapas globales y locales</h3>
+<p>Un error que aparece por cambios en Melodic respecto a Kinetic se produce por diferencia del criterio usado a la hora de definir la ruta a los mapas en el paquete de <a href="http://emanual.robotis.com/docs/en/platform/turtlebot3/navigation/">navegación</a> del Turtlebot3.</p>
+<p>[Reproducción del error]
+[Explicación del problema]</p>
+<p>Para solucionarlo hay que editar dos archivos dentro del directorio <code>src/turtlebot3_navigation/params</code>, en los que se definen algunos parámetros necesarios para la navegación.</p>
+<p>Uno de los archivos que hay que modificar en dicho directorio es <code>global_cost_map_params.yaml</code>, eliminando las barras en<code>/map</code> y <code>/base_footprint</code>:</p>
+<pre class="code literal-block"><span></span><span class="n">global_costmap</span><span class="o">:</span>
+  <span class="n">global_frame</span><span class="o">:</span> <span class="o">/</span><span class="n">map</span>
+  <span class="n">robot_base_frame</span><span class="o">:</span> <span class="o">/</span><span class="n">base_footprint</span>
+</pre>
+
+
+<p>para que queden del siguiente modo (nótese la ausencia de barras delante de los parámetros):</p>
+<pre class="code literal-block"><span></span><span class="n">global_costmap</span><span class="o">:</span>
+  <span class="n">global_frame</span><span class="o">:</span> <span class="n">map</span>
+  <span class="n">robot_base_frame</span><span class="o">:</span> <span class="n">base_footprint</span>
+</pre>
+
+
+<p>El segundo archivo a modificar es <code>local_costmap_params.yaml</code>, eliminando las barras para que queden del siguiente modo:</p>
+<pre class="code literal-block"><span></span><span class="n">local_costmap</span><span class="o">:</span>
+  <span class="n">global_frame</span><span class="o">:</span> <span class="n">odom</span>
+  <span class="n">robot_base_frame</span><span class="o">:</span> <span class="n">base_footprint</span>
+</pre>
+
+
+<p>Con esto los parámetros <code>map</code>, <code>base_footprint</code> (tanto para los parámetros globales como locales) y <code>odom</code> se definen como relativos al propio paquete, y no como absolutos como ocurre con el caso de colocar la barra (<code>/</code>) delante.</p>
+<h3>Bola extra: problemas de visualización en <code>rviz</code>
+</h3>
+<p>Otro problema derivado de la pantalla de alta resolución de mi portátil, un Dell XPS 13, son los <a href="https://wiki.ros.org/rvi://github.com/ros-visualization/rviz/issues/1069">problemas de visualización en <code>rviz</code></a>, el visualizador que usa ROS; además, al intentar redimensionar la ventana o al colocar otra ventana encima, no se actualiza el contenido, por lo que no es utilizable.</p>
+<p><img src="../../images/rviz-problema-visualizacion.png" alt="Problemas de visualización en rviz" width="60%"></p>
+<p>Para <a href="https://github.com/ros-visualization/rviz/issues/1203">solucionarlo</a>, basta con exportar (para dejarlas en blanco) dos variables de entorno:</p>
+<pre class="code literal-block"><span></span>export QT_AUTO_SCREEN_SCALE_FACTOR=
+export QT_SCREEN_SCALE_FACTORS=
+</pre>
+
+
+<p>Con estos pasos, el entorno está plenamente funcional.</p>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/ros/" rel="tag">ROS</a></li>
+            <li><a class="tag p-category" href="../../categories/turtlebot/" rel="tag">turtlebot</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../turtlebot3/" rel="prev" title="Turtlebot3">Publicación anterior</a>
+            </li>
+        </ul></nav></aside></article>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2019         <a href="mailto:david.vazquezgijon@gmail.com">David Vázquez</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD");
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>

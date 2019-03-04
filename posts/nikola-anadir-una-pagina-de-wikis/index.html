@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nikola - Añadir una página de wikis | Muerte por Checklist</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="es" href="../../rss.xml">
+<link rel="canonical" href="https://davidvg.github.io/posts/nikola-anadir-una-pagina-de-wikis/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="David Vázquez">
+<link rel="prev" href="../nikola-github-pages-instalacion/" title="Nikola + GitHub Pages - Instalación" type="text/html">
+<link rel="next" href="../beaglebone-black-alternativa-a-la-raspberry-pi/" title="BeagleBone Black, una alternativa a la Raspberry Pi" type="text/html">
+<meta property="og:site_name" content="Muerte por Checklist">
+<meta property="og:title" content="Nikola - Añadir una página de wikis">
+<meta property="og:url" content="https://davidvg.github.io/posts/nikola-anadir-una-pagina-de-wikis/">
+<meta property="og:description" content="Uno de los objetivos de crear la web era disponer de una página de wikis, en la que poder ir anotando todas aquellas cosas que, por trabajo, hobby, ocio, o cualquier otro motivo, voy aprendiendo y que">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2017-02-17T17:17:50+01:00">
+<meta property="article:tag" content="blog">
+<meta property="article:tag" content="Nikola">
+<meta property="article:tag" content="tutorial">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Mostrar navegación</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://davidvg.github.io/">
+
+                <span id="blog-title">Muerte por Checklist</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../../pages/wiki/index.html">Wiki</a>
+                </li>
+<li>
+<a href="../../archive.html">Archivo</a>
+                </li>
+<li>
+<a href="../../categories/">Etiquetas</a>
+                </li>
+<li>
+<a href="../../rss.xml">Canal RSS</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="index.md" id="sourcelink">Código fuente</a>
+    </li>
+
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Nikola - Añadir una página de wikis</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                    David Vázquez
+            </span></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2017-02-17T17:17:50+01:00" itemprop="datePublished" title="2017-02-17">2017-02-17</time></a>
+            </p>
+            
+        <p class="sourceline"><a href="index.md" class="sourcelink">Código fuente</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p>Uno de los objetivos de crear la web era disponer de una página de wikis, en la que poder ir anotando todas aquellas cosas que, por trabajo, hobby, ocio, o cualquier otro motivo, voy aprendiendo y que resulta práctico, si no recordar, tener archivado en algún lugar a mano.</p>
+<p>Estas notas serían, por ejemplo, flujos de aplicación de algoritmos de <a href="https://es.wikipedia.org/wiki/Aprendizaje_autom%C3%A1tico">Machine Learning</a>, los principales usos de las <a href="https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular#Descripci.C3.B3n_de_las_expresiones_regulares">expresiones regulares</a>, pequeños fragmentos de código, o cualquier otra cosa.</p>
+<p>El fin es tener una portada, accesible desde la barra de navegación, que enlazará a otras páginas, cada una de las cuales contendrá información sobre un tema, aplicación, etc.</p>
+<!-- TEASER_END -->
+
+<h3>Creación de una página de Wikis</h3>
+<p>Comenzamos creando, en lugar de un post, una página, usando <code>nikola new_page</code> o mejor:</p>
+<pre class="code literal-block"><span></span>nikola new_post -p wiki.md
+</pre>
+
+
+<p>Añadiendo <code>-p</code> decimos a Nikola que cree una página en lugar de un post. En este caso, se crea el archivo <code>pages/wiki.md</code>. Esta página será la que hará de portada o índice de todas aquellas páginas donde crearemos las wikis. Además, haciéndolo de esta manera el proceso es más coherente, ya que usando <code>new_page</code> la página creada no se almacena por defecto dentro de <code>pages/</code>.</p>
+<h4>Añadiendo la página al menú de navegación</h4>
+<p>Para añadir la <em>página-índice</em> al menú de navegación, modificamos de nuevo el archivo <code>conf.py</code>, añadiendo la url relativa y el nombre de la página al diccionario <code>NAVIGATION_LINKS</code>:</p>
+<pre class="code literal-block"><span></span><span class="n">NAVIGATION_LINKS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">DEFAULT_LANG</span><span class="p">:</span> <span class="p">(</span>
+        <span class="p">(</span><span class="s2">"/pages/wiki/index.html"</span><span class="p">,</span> <span class="s2">"Wiki"</span><span class="p">),</span>
+        <span class="o">...</span>
+    <span class="p">)</span>
+<span class="p">}</span>
+</pre>
+
+
+<p>Cada línea corresponde a una pareja <code>(url, nombre)</code>, correspondientes a cada uno de los enlaces de la barra de navegación de la página. Por defecto, al crear el blog aparecen <em>Archivo</em>, <em>Etiquetas</em> y <em>Canal RSS</em>; ahora, además, aparecerá otro enlace llamado <em>Wiki</em>.</p>
+<p>Aunque el archivo creado es un archivo Markdown (<code>.md</code>), el archivo enlazado tiene formato <code>.html</code>. Ello es porque Nikola, al generar la web, procesa los archivos Markdown que encuentra y genera archivos HTML, alojándolos en una carpeta dentro del directorio <code>output/pages/</code>. En este caso, al crearse el archivo <code>pages/wiki.md</code>, Nikola genera dos archivos, <code>output/pages/wiki/index.html</code> y <code>output/pages/wiki/index.md</code>, que son los que se enlazan (el directorio que se genera dentro de <code>output/pages/</code> lleva el mismo nombre que la página que creamos)</p>
+<h4>Añadiendo una página a la Wiki</h4>
+<p>Ya hemos generado el índice de nuestras wikis; en ella iremos incluyendo enlaces a cada una de las páginas que incluirá una wiki.</p>
+<p>Para crear una de estas <em>páginas-wiki</em>, crearemos una nueva página de la misma manera que antes, en la que añadiremos el contenido que queramos (en este caso, referencias al paquete de machine learning <a href="http://scikit-learn.org/stable/index.html">Scikit-Learn</a>):</p>
+<pre class="code literal-block"><span></span>nikola new_post -p sklearn.md
+</pre>
+
+
+<p>El siguiente paso es enlazar la página desde la portada de las wikis que generamos anteriormente, es decir desde nuestro archivo <code>wiki.md</code>, añadiendo la ruta relativa como en el caso de la barra de navegación en dicho archivo:</p>
+<pre class="code literal-block"><span></span><span class="c1"># wiki.md</span>
+<span class="p">[</span><span class="n">Scikit</span><span class="o">-</span><span class="n">Learn</span><span class="p">](</span><span class="o">/</span><span class="n">pages</span><span class="o">/</span><span class="n">sklearn</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span><span class="p">)</span>
+</pre>
+
+
+<p>Ahora ya podemos añadir contenido a la página <code>sklearn.md</code>, y acceder a ella siempre que queramos consultar nuestras notas sobre Scikit-learn, simplemente yendo al enlace de las wikis en la barra de navegación.</p>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/blog/" rel="tag">blog</a></li>
+            <li><a class="tag p-category" href="../../categories/nikola/" rel="tag">Nikola</a></li>
+            <li><a class="tag p-category" href="../../categories/tutorial/" rel="tag">tutorial</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../nikola-github-pages-instalacion/" rel="prev" title="Nikola + GitHub Pages - Instalación">Publicación anterior</a>
+            </li>
+            <li class="next">
+                <a href="../beaglebone-black-alternativa-a-la-raspberry-pi/" rel="next" title="BeagleBone Black, una alternativa a la Raspberry Pi">Siguiente publicación</a>
+            </li>
+        </ul></nav></aside></article>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2019         <a href="mailto:david.vazquezgijon@gmail.com">David Vázquez</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD");
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>

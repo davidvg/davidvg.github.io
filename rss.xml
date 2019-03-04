@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Muerte por Checklist</title><link>https://davidvg.github.io/</link><description>Blog personal - barra - cajón desastre</description><atom:link href="https://davidvg.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>es</language><lastBuildDate>Mon, 04 Mar 2019 18:12:53 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Turtlebot3 y ROS Melodic en Ubuntu 18.04</title><link>https://davidvg.github.io/posts/turtlebot3-y-ros-melodic-en-ubuntu-1804/</link><dc:creator>David Vázquez</dc:creator><description>&lt;div&gt;&lt;p&gt;Al empezar a hacer pruebas con el &lt;a href="https://davidvg.github.io/posts/turtlebot3/"&gt;Turtlebot3&lt;/a&gt; empezaron a aparecer algunos problemas de compatibilidad relacionados con las diferentes versiones de ROS y Ubuntu, que se resumen en:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;El código del Turtlebot3 está escrito para la versión &lt;a href="https://wiki.ros.org/kinetic"&gt;Kinetic&lt;/a&gt; de ROS.&lt;/li&gt;
+&lt;li&gt;Kinetic es compatible con las versiones Wily (15.10) y Xenial (16.04) de Ubuntu.&lt;/li&gt;
+&lt;li&gt;En mi ordenador tengo instalado Ubuntu Bionic (18.04), versión para la que Kinetic no es compatible.&lt;/li&gt;
+&lt;li&gt;ROS Melodic, la versión que tiene soporte para Ubuntu 18.04, no tiene soporte completo para Turtlebot3 (algunos de los módulos y funciones necesarios para el Turtlebot3 aún no se han portado a Melodic)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;TL;DR&lt;/strong&gt;: La versión de ROS que puedo instalar “fácilmente” en mi sistema operativo no da soporte completo al Turtlebot3, y a la vez la versión de ROS que da soporte a Turtlebot3 no es compatible con mi sistema operativo. Incompatibilidad en ambos sentidos.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Esto me dejaba varias posibles soluciones:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Crear una &lt;a href="https://es.wikipedia.org/wiki/M%C3%A1quina_virtual"&gt;máquina virtual&lt;/a&gt; corriendo Ubuntu 16.04 e instalar ROS Kinetic.&lt;/li&gt;
+&lt;li&gt;Usar &lt;a href="https://www.docker.com/"&gt;Docker&lt;/a&gt; para crear un contenedor con Ubuntu 16.04 e instalar ROS Kinetic.&lt;/li&gt;
+&lt;li&gt;Usar una de las imágenes de &lt;a href="https://docs.docker.com/samples/library/ros/"&gt;Docker con ROS preinstalado&lt;/a&gt; con la versión Kinetic.&lt;/li&gt;
+&lt;li&gt;Usar Ubuntu 18.04 y ROS Melodic e ir solucionando los problemas a medida que surjan.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;La máquina virtual la descarté de mano, por ser más práctico usar los contenedores de Docker. Sin embargo, como en los grupos de usuarios de ROS se habla de que todo el código del Turtlebot3 se está portando poco a poco a Melodic, opté por probar con la última opción e ir resolviendo los problemas a medida que se iban &lt;del&gt;amontonando&lt;/del&gt; produciendo.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Si eso más terde me pongo..." src="https://davidvg.github.io/images/memes/ITcrowd-put-this-with-rest-of-fire.jpg" width="40%"&gt; &lt;/p&gt;
+&lt;h3&gt;Instalación de módulos no portados a Melodic&lt;/h3&gt;
+&lt;p&gt;Instalar los módulos que &lt;a href="https://index.ros.org/packages/#melodic"&gt;no estan aún portados&lt;/a&gt; resulta más fácil de lo podría pensarse. Aunque no estén disponibles para ROS Melodic, los repositorios de cada uno de ellos están disponibles en GitHub; muchos ya tienen una rama lista para ser integrada en futuras actualizaciones de Melodic, y el resto pueden descargarse y compilarse con las características del sistema que se emplee.
+Los módulos necesarios para hacer funcionar el Turtlebot3 y que no están disponibles en Melodic pero pueden instalarse desde GitHub son:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;openslam_gmapping&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;slam_gmapping&lt;/code&gt;: módulo de creación de mapas mediante &lt;em&gt;SLAM&lt;/em&gt; (&lt;em&gt;Simultaneous Localization and Mapping&lt;/em&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;hector_slam&lt;/code&gt;, &lt;code&gt;slam_karto&lt;/code&gt;: otros métodos de cartografiado utilizados por el Turtlebot.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;frontier_exploration&lt;/code&gt;: módulo de exploración de mapas.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;teleop_twist_joy&lt;/code&gt;: utilización de &lt;em&gt;joystick&lt;/em&gt; para controlar el robot.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Estos paquetes se pueden descargar o clonar en el directorio &lt;code&gt;src&lt;/code&gt; del proyecto y compilar con &lt;code&gt;catkin_make&lt;/code&gt; o &lt;code&gt;catkin build&lt;/code&gt;. El resto de paquetes disponibles para Melodic se instalan mediante el gestor de software de Ubuntu, o mediante &lt;code&gt;apt-get&lt;/code&gt; o similar.&lt;/p&gt;
+&lt;h3&gt;Mapas globales y locales&lt;/h3&gt;
+&lt;p&gt;Un error que aparece por cambios en Melodic respecto a Kinetic se produce por diferencia del criterio usado a la hora de definir la ruta a los mapas en el paquete de &lt;a href="http://emanual.robotis.com/docs/en/platform/turtlebot3/navigation/"&gt;navegación&lt;/a&gt; del Turtlebot3.&lt;/p&gt;
+&lt;p&gt;[Reproducción del error]
+[Explicación del problema]&lt;/p&gt;
+&lt;p&gt;Para solucionarlo hay que editar dos archivos dentro del directorio &lt;code&gt;src/turtlebot3_navigation/params&lt;/code&gt;, en los que se definen algunos parámetros necesarios para la navegación.&lt;/p&gt;
+&lt;p&gt;Uno de los archivos que hay que modificar en dicho directorio es &lt;code&gt;global_cost_map_params.yaml&lt;/code&gt;, eliminando las barras en&lt;code&gt;/map&lt;/code&gt; y &lt;code&gt;/base_footprint&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;global_costmap&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+  &lt;span class="n"&gt;global_frame&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;map&lt;/span&gt;
+  &lt;span class="n"&gt;robot_base_frame&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;base_footprint&lt;/span&gt;
+&lt;/pre&gt;
+
+
+&lt;p&gt;para que queden del siguiente modo (nótese la ausencia de barras delante de los parámetros):&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;global_costmap&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+  &lt;span class="n"&gt;global_frame&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;map&lt;/span&gt;
+  &lt;span class="n"&gt;robot_base_frame&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;base_footprint&lt;/span&gt;
+&lt;/pre&gt;
+
+
+&lt;p&gt;El segundo archivo a modificar es &lt;code&gt;local_costmap_params.yaml&lt;/code&gt;, eliminando las barras para que queden del siguiente modo:&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;local_costmap&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+  &lt;span class="n"&gt;global_frame&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;odom&lt;/span&gt;
+  &lt;span class="n"&gt;robot_base_frame&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;base_footprint&lt;/span&gt;
+&lt;/pre&gt;
+
+
+&lt;p&gt;Con esto los parámetros &lt;code&gt;map&lt;/code&gt;, &lt;code&gt;base_footprint&lt;/code&gt; (tanto para los parámetros globales como locales) y &lt;code&gt;odom&lt;/code&gt; se definen como relativos al propio paquete, y no como absolutos como ocurre con el caso de colocar la barra (&lt;code&gt;/&lt;/code&gt;) delante.&lt;/p&gt;
+&lt;h3&gt;Bola extra: problemas de visualización en &lt;code&gt;rviz&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;Otro problema derivado de la pantalla de alta resolución de mi portátil, un Dell XPS 13, son los &lt;a href="https://wiki.ros.org/rvi://github.com/ros-visualization/rviz/issues/1069"&gt;problemas de visualización en &lt;code&gt;rviz&lt;/code&gt;&lt;/a&gt;, el visualizador que usa ROS; además, al intentar redimensionar la ventana o al colocar otra ventana encima, no se actualiza el contenido, por lo que no es utilizable.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://davidvg.github.io/images/rviz-problema-visualizacion.png" alt="Problemas de visualización en rviz" width="60%"&gt;&lt;/p&gt;
+&lt;p&gt;Para &lt;a href="https://github.com/ros-visualization/rviz/issues/1203"&gt;solucionarlo&lt;/a&gt;, basta con exportar (para dejarlas en blanco) dos variables de entorno:&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;export QT_AUTO_SCREEN_SCALE_FACTOR=
+export QT_SCREEN_SCALE_FACTORS=
+&lt;/pre&gt;
+
+
+&lt;p&gt;Con estos pasos, el entorno está plenamente funcional.&lt;/p&gt;&lt;/div&gt;</description><category>ROS</category><category>turtlebot</category><guid>https://davidvg.github.io/posts/turtlebot3-y-ros-melodic-en-ubuntu-1804/</guid><pubDate>Mon, 04 Mar 2019 16:46:03 GMT</pubDate></item><item><title>Turtlebot3</title><link>https://davidvg.github.io/posts/turtlebot3/</link><dc:creator>David Vázquez</dc:creator><description>&lt;div&gt;&lt;p&gt;Este año los Reyes Magos se han puesto espléndidos y me han traído un &lt;a href="http://www.robotis.us/turtlebot-3/"&gt;Turtlebot3&lt;/a&gt;, el modelo Burger para ser más exactos. Bueno, en realidad no han sido los Reyes, sino que me lo he auto-regalado.&lt;/p&gt;
+&lt;!-- &lt;img style="float: center;" src="/home/david/git/blog/output/images/turtlebot3.jpg" width=480 &gt; --&gt;
+
+&lt;p&gt;&lt;img alt="turtlebot3" src="https://davidvg.github.io/images/turtlebot3.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;Aunque también sirve para pasar un buen rato jugando con él, en realidad es una plataforma de desarrollo de robótica, ya que es un robot modular y totalmente personalizable. Es un robot de dos ruedas y una bola que actúa como rueda castor o giratoria. Se organiza en 4 niveles mediante plataformas:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Nivel 1: aloja los motores y la batería.&lt;/li&gt;
+&lt;li&gt;Nivel 2: en él se encuentra la placa &lt;a href="http://wiki.ros.org/opencr"&gt;OpenCR&lt;/a&gt;, basada en &lt;a href="https://www.arduino.cc/"&gt;Arduino&lt;/a&gt;, y que incluye el hardware necesario para implementar el Turtlebot3: sensores, drivers para motores, interfaces de comunicaciones, etc.&lt;/li&gt;
+&lt;li&gt;Nivel 3: en él se coloca la &lt;a href="https://www.raspberrypi.org/products/raspberry-pi-3-model-b/"&gt;Raspberry Pi 3&lt;/a&gt; en la que se ejecuta &lt;a href="http://www.ros.org/"&gt;ROS&lt;/a&gt;, el sistema operativo del robot. También tiene espacio suficiente para añadir más sensores o componentes.&lt;/li&gt;
+&lt;li&gt;Nivel 4: es el nivel superior y sobre el que se coloca el &lt;a href="https://en.wikipedia.org/wiki/Lidar"&gt;LIDAR&lt;/a&gt;, que se emplea para medir distancias y que a grandes rasgos es similar al &lt;a href="https://es.wikipedia.org/wiki/Radar"&gt;RADAR&lt;/a&gt; pero usando la luz de un láser.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Como cada nivel es idéntico a los demás, se pueden añadir más niveles si se necesitan.&lt;/p&gt;
+&lt;p&gt;El proyecto es &lt;a href="https://es.wikipedia.org/wiki/C%C3%B3digo_abierto"&gt;código&lt;/a&gt; abierto, u open source, tanto el &lt;a href="https://es.wikipedia.org/wiki/Hardware_libre"&gt;hardware&lt;/a&gt; como el &lt;a href="https://es.wikipedia.org/wiki/Software_libre"&gt;software&lt;/a&gt;, por lo que es posible modificarlo, adaptarlo y configurarlo a medida. Todas las partes que forman los niveles, los mecanismos de sujeción, etc. se pueden imprimir en una impresora 3D usando los diseños que están disponibles en la web.&lt;/p&gt;
+&lt;p&gt;De momento estoy haciendo pruebas, ya que el Turtlebot3 se desarrolló para la versión de ROS Kinetic Kame, que a su vez es compatible con &lt;a href="https://www.ubuntu.com/"&gt;Ubuntu&lt;/a&gt; 16.04, mientras que yo tengo instalado Ubuntu 18.04, para la que Kinetic no es compatible; sí lo es la última versión disponible de ROS, Melodic Morenia, a la que se está portando el código de Turtlebot3.&lt;/p&gt;
+&lt;p&gt;Hasta ahora he conseguido que funcionen sin demasiados problemas los modos básicos de teleoperación del robot, mediante teclado y joystick, y las funciones básicas de &lt;a href="https://es.wikipedia.org/wiki/Localizaci%C3%B3n_y_modelado_simult%C3%A1neos"&gt;SLAM&lt;/a&gt; y cartografiado, así como la navegación autónoma básica usando el mapa creado.&lt;/p&gt;&lt;/div&gt;</description><category>robotica</category><category>slam</category><category>turtlebot</category><category>turtlebot3</category><guid>https://davidvg.github.io/posts/turtlebot3/</guid><pubDate>Thu, 24 Jan 2019 16:00:00 GMT</pubDate></item><item><title>Júpiter</title><link>https://davidvg.github.io/posts/jupiter-180513/</link><dc:creator>David Vázquez</dc:creator><description>&lt;div&gt;&lt;p&gt;Esta temporada Júpiter se encuentra en &lt;a href="https://es.wikipedia.org/wiki/Oposici%C3%B3n_(astronom%C3%ADa)"&gt;oposición&lt;/a&gt;, lo que viene a significar que desde la Tierra lo vemos en el punto opuesto al Sol.&lt;/p&gt;
+&lt;p&gt;En la fotografía se pueden apreciar, a la izquierda, tres puntos que se corresponden con tres de las lunas de Júpiter; de izquierda a derecha, son Ganimedes, Calisto (un punto más débil que los otros) e Ío, tres de las cuatro &lt;a href="https://es.wikipedia.org/wiki/Sat%C3%A9lite_galileano"&gt;lunas galileanas&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Jupiter y lunas" src="https://davidvg.github.io/jupiter.jpeg"&gt;&lt;/p&gt;
+&lt;p&gt;Como &lt;em&gt;bonus&lt;/em&gt;, se puede también apreciar la cuarta luna galileana, Europa, como una pequeña zona circular algo más brillante sobre el disco de Júpiter, así como la sombra que proyecta dicha luna sobre el planeta. En el recorte ampliado de abajo se puede ver algo mejor.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Jupiter, Europa y su sombra" src="https://davidvg.github.io/jupiter_disc.jpeg"&gt;&lt;/p&gt;
+&lt;h3&gt;Datos de la toma&lt;/h3&gt;
+&lt;p&gt;La cámara es una QHY5-II-M en un Celestron C8, sobre montura Skywatcher EQ6.&lt;/p&gt;
+&lt;p&gt;La imagen se obtuvo el día 13 de mayo de 2018, a las 4:08 de la madrugada, desde León, mediante apilado de un video de 30 segundos, compuesto por 386 frames, capturado usando &lt;a href="https://www.openastroproject.org/oacapture/"&gt;oaCapture&lt;/a&gt; en Ubuntu.&lt;/p&gt;
+&lt;p&gt;El apilado y procesado se realizó íntegramente usando &lt;a href="https://free-astro.org/index.php/Siril"&gt;Siril 0.9.9&lt;/a&gt; en Ubuntu.&lt;/p&gt;
+&lt;p&gt;El recorte y añadido de texto se hizo usando &lt;a href="https://www.gimp.org/"&gt;GIMP&lt;/a&gt; en Ubuntu.&lt;/p&gt;&lt;/div&gt;</description><category>jupiter</category><category>planeta</category><guid>https://davidvg.github.io/posts/jupiter-180513/</guid><pubDate>Thu, 31 May 2018 16:18:43 GMT</pubDate></item><item><title>BeagleBone Black, una alternativa a la Raspberry Pi</title><link>https://davidvg.github.io/posts/beaglebone-black-alternativa-a-la-raspberry-pi/</link><dc:creator>David Vázquez</dc:creator><description>&lt;div&gt;&lt;h3&gt;Introducción&lt;/h3&gt;
+&lt;p&gt;La BeagleBone Black es una computadora &lt;a href="https://es.wikipedia.org/wiki/Hardware_Libre"&gt;open hardware&lt;/a&gt; similar a la más conocida &lt;a href="https://davidvg.github.io/posts/beaglebone-black-alternativa-a-la-raspberry-pi/www.raspberrypi.org"&gt;Raspberry Pi&lt;/a&gt;. Es la versión de bajo costo de la familia &lt;a href="https://beagleboard.org"&gt;BeagleBoard&lt;/a&gt;, fabricada por la mítica &lt;a href="https://davidvg.github.io/https:///www.ti.com"&gt;Texas Instruments&lt;/a&gt;. Entre sus características más interesantes están:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Procesador Sitara AM3358 a 1 GHz.&lt;/li&gt;
+&lt;li&gt;512 MB de RAM DDR3L a 800 MHz.&lt;/li&gt;
+&lt;li&gt;Memoria interna eMMC de 4 GB.&lt;/li&gt;
+&lt;li&gt;3 canales &lt;a href="https://es.wikipedia.org/wiki/Modulaci%C3%B3n_por_ancho_de_pulsos"&gt;PWM&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;7 entradas de &lt;a href="https://es.wikipedia.org/wiki/Conversi%C3%B3n_anal%C3%B3gica-digital"&gt;Conversor Analógico/Digital (ADC)&lt;/a&gt; de 10 bit.&lt;/li&gt;
+&lt;li&gt;3 canales &lt;a href="https://es.wikipedia.org/wiki/I%C2%B2C"&gt;I2C&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;2 canales &lt;a href="https://es.wikipedia.org/wiki/Serial_Peripheral_Interface"&gt;SPI&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;5 puertos serie &lt;a href="https://es.wikipedia.org/wiki/Universal_Asynchronous_Receiver-Transmitter"&gt;UART&lt;/a&gt; (uno de ellos sólo con función de trasferir datos, no de recibir)&lt;/li&gt;
+&lt;li&gt;3 módulos descodificadores de &lt;a href="http://www.ni.com/tutorial/7109/es/"&gt;encoder de cuadratura&lt;/a&gt; (enhanced quadrature encoder pulse, eQEP), aunque para usarlos todos es necesario deshabilitar otros módulos que causan interferencia en los pines.&lt;/li&gt;
+&lt;li&gt;2 &lt;a href="https://es.wikipedia.org/wiki/Sistma_de_tiempo_real"&gt;Unidades en Tiempo Real Programables (PRU)&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Conexión WiFi y Bluetooth integradas en la versión [Wireless.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A nivel hardware existen más elementos para algunos de los dispositivos anteriores, aunque sólo parte de ellos están disponibles debido a interferencia entre pines y multiplexado; por ejemplo, el procesador tiene 6 canales UART, de los que sólo están disponibles desde los pines 5 de ellos.&lt;/p&gt;
+&lt;p&gt;Este post resume los pasos que han sido necesarios para poner en funcionamiento la Beaglebone Black, tanto en su versión original (revisión C.1) como la versión Wireless. A partir de ahora, me referiré a la BeagleBone Black como BBB y a su versión Wireless como BBBW.&lt;/p&gt;
+&lt;p&gt;Todos los pasos se harán para un sistema GNU/Linux Ubuntu 16.04, preferentemente usando la línea de comandos.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://davidvg.github.io/posts/beaglebone-black-alternativa-a-la-raspberry-pi/"&gt;Leer más…&lt;/a&gt; (quedan 5 minutos de lectura)&lt;/p&gt;&lt;/div&gt;</description><category>beaglebone</category><category>openhardware</category><category>tutorial</category><guid>https://davidvg.github.io/posts/beaglebone-black-alternativa-a-la-raspberry-pi/</guid><pubDate>Sun, 10 Sep 2017 10:30:00 GMT</pubDate></item><item><title>Nikola - Añadir una página de wikis</title><link>https://davidvg.github.io/posts/nikola-anadir-una-pagina-de-wikis/</link><dc:creator>David Vázquez</dc:creator><description>&lt;div&gt;&lt;p&gt;Uno de los objetivos de crear la web era disponer de una página de wikis, en la que poder ir anotando todas aquellas cosas que, por trabajo, hobby, ocio, o cualquier otro motivo, voy aprendiendo y que resulta práctico, si no recordar, tener archivado en algún lugar a mano.&lt;/p&gt;
+&lt;p&gt;Estas notas serían, por ejemplo, flujos de aplicación de algoritmos de &lt;a href="https://es.wikipedia.org/wiki/Aprendizaje_autom%C3%A1tico"&gt;Machine Learning&lt;/a&gt;, los principales usos de las &lt;a href="https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular#Descripci.C3.B3n_de_las_expresiones_regulares"&gt;expresiones regulares&lt;/a&gt;, pequeños fragmentos de código, o cualquier otra cosa.&lt;/p&gt;
+&lt;p&gt;El fin es tener una portada, accesible desde la barra de navegación, que enlazará a otras páginas, cada una de las cuales contendrá información sobre un tema, aplicación, etc.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://davidvg.github.io/posts/nikola-anadir-una-pagina-de-wikis/"&gt;Leer más…&lt;/a&gt; (quedan 2 minutos de lectura)&lt;/p&gt;&lt;/div&gt;</description><category>blog</category><category>Nikola</category><category>tutorial</category><guid>https://davidvg.github.io/posts/nikola-anadir-una-pagina-de-wikis/</guid><pubDate>Fri, 17 Feb 2017 16:17:50 GMT</pubDate></item><item><title>Nikola + GitHub Pages - Instalación</title><link>https://davidvg.github.io/posts/nikola-github-pages-instalacion/</link><dc:creator>David Vázquez</dc:creator><description>&lt;div&gt;&lt;p&gt;Después de mucho pensar, de mucho mirar, y de mucho probar, al fin conseguí empezar a montar el blog. Partía con algunos requisitos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Alojamiento gratuito.&lt;/li&gt;
+&lt;li&gt;Escritura de posts en Markdown (opción futurible: ReStructuredText)&lt;/li&gt;
+&lt;li&gt;Posibilidad de publicar posts con expresiones matemáticas.&lt;/li&gt;
+&lt;li&gt;Posibilidad de publicar notebooks de &lt;a href="https://jupyter.org/"&gt;iPython/Jupyter&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Facilidad de uso.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;La opción que más me ha gustado es la combinación de &lt;a href="https://getnikola.com/"&gt;Nikola&lt;/a&gt; como sistema de blogging y &lt;a href="https://pages.github.com/"&gt;GitHub Pages&lt;/a&gt; para el alojamiento.&lt;/p&gt;
+&lt;p&gt;Nikola está escrito en Python y permite crear posts desde archivos Markdown, ReStructuredText o incluso notebooks de iPython. Se integra perfectamente con &lt;a href="https://www.mathjax.org/"&gt;Mathjax&lt;/a&gt; para generar expresiones matemáticas.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://davidvg.github.io/posts/nikola-github-pages-instalacion/"&gt;Leer más…&lt;/a&gt; (quedan 5 minutos de lectura)&lt;/p&gt;&lt;/div&gt;</description><category>blog</category><category>Nikola</category><category>tutorial</category><guid>https://davidvg.github.io/posts/nikola-github-pages-instalacion/</guid><pubDate>Fri, 27 Jan 2017 11:00:00 GMT</pubDate></item></channel></rss>
