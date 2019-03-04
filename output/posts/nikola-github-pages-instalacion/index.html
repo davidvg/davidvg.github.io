@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nikola + GitHub Pages - Instalación | Muerte por Checklist</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="es" href="../../rss.xml">
+<link rel="canonical" href="https://davidvg.github.io/posts/nikola-github-pages-instalacion/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="David Vázquez">
+<link rel="next" href="../nikola-anadir-una-pagina-de-wikis/" title="Nikola - Añadir una página de wikis" type="text/html">
+<meta property="og:site_name" content="Muerte por Checklist">
+<meta property="og:title" content="Nikola + GitHub Pages - Instalación">
+<meta property="og:url" content="https://davidvg.github.io/posts/nikola-github-pages-instalacion/">
+<meta property="og:description" content="Después de mucho pensar, de mucho mirar, y de mucho probar, al fin conseguí empezar a montar el blog. Partía con algunos requisitos:
+
+Alojamiento gratuito.
+Escritura de posts en Markdown (opción futur">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2017-01-27T12:00:00+01:00">
+<meta property="article:tag" content="blog">
+<meta property="article:tag" content="Nikola">
+<meta property="article:tag" content="tutorial">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Mostrar navegación</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://davidvg.github.io/">
+
+                <span id="blog-title">Muerte por Checklist</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../../pages/wiki/index.html">Wiki</a>
+                </li>
+<li>
+<a href="../../archive.html">Archivo</a>
+                </li>
+<li>
+<a href="../../categories/">Etiquetas</a>
+                </li>
+<li>
+<a href="../../rss.xml">Canal RSS</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="index.md" id="sourcelink">Código fuente</a>
+    </li>
+
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Nikola + GitHub Pages - Instalación</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                    David Vázquez
+            </span></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2017-01-27T12:00:00+01:00" itemprop="datePublished" title="2017-01-27">2017-01-27</time></a>
+            </p>
+            
+        <p class="sourceline"><a href="index.md" class="sourcelink">Código fuente</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p>Después de mucho pensar, de mucho mirar, y de mucho probar, al fin conseguí empezar a montar el blog. Partía con algunos requisitos:</p>
+<ul>
+<li>Alojamiento gratuito.</li>
+<li>Escritura de posts en Markdown (opción futurible: ReStructuredText)</li>
+<li>Posibilidad de publicar posts con expresiones matemáticas.</li>
+<li>Posibilidad de publicar notebooks de <a href="https://jupyter.org/">iPython/Jupyter</a>.</li>
+<li>Facilidad de uso.</li>
+</ul>
+<p>La opción que más me ha gustado es la combinación de <a href="https://getnikola.com/">Nikola</a> como sistema de blogging y <a href="https://pages.github.com/">GitHub Pages</a> para el alojamiento.</p>
+<p>Nikola está escrito en Python y permite crear posts desde archivos Markdown, ReStructuredText o incluso notebooks de iPython. Se integra perfectamente con <a href="https://www.mathjax.org/">Mathjax</a> para generar expresiones matemáticas.</p>
+<!-- TEASER_END -->
+
+<h3>Instalación de Nikola</h3>
+<p>El primer paso es crear un entorno virtual en el que instalar Nikola. Usando <a href="https://virtualenvwrapper.readthedocs.io/en/latest/">VirtualEnvWrapper</a>:</p>
+<pre class="code literal-block"><span></span>mkvirtualenv -p /usr/bin/python3 nikola
+pip install <span class="s2">"nikola[extras]"</span>
+</pre>
+
+
+<p>La última línea instala una distribución de Nikola que incluye las principales dependencias.</p>
+<p>En la instalación se obtuvo un error de un módulo que no se podía encontrar. La solución fue instalar el módulo <code>xlrd</code>:</p>
+<pre class="code literal-block"><span></span>pip install xlrd
+</pre>
+
+
+<p>¡Y eso es todo!</p>
+<h3>Creando el repositorio de GigHub</h3>
+<!--Cada usuario de GitHub tiene una dirección web de la forma `usuario.github.io`. Es uno de los dos tipos de webs que se tienen en GitHub: webs de usuario y webs de proyecto. Esta es de las primeras.-->
+
+<p>Nikola permite el alojamiento del sitio web utilizando <!--la página de usuario GitHub--> GitHub Pages (de hecho incluye un comando para realizar todos los pasos necesarios para subir el contenido que hayamos escrito directamente al blog) utilizando un repositorio de Git, que debemos crear. En mi caso no me he estrujado mucho el cerebro y lo he llamado <a href="https://github.com/davidvg/davidvg.github.io/">davidvg.github.io</a></p>
+<p>Una vez creado el repositorio en <a href="https://github.com">GitHub</a>, nos ubicamos -si no estamos ya- en el directorio donde se alojará el blog, inicializamos un repositorio y añadimos el <em>remote</em> del repositorio que creamos:</p>
+<pre class="code literal-block"><span></span>git init
+git remote add origin https://github.com/davidvg/davidvg.github.io
+</pre>
+
+
+<h3>Creando el blog</h3>
+<p>El siguiente paso es crear el blog. Para ello Nikola incluye un comando que nos va preguntando información acerca del sitio que queremos generar:</p>
+<pre class="code literal-block"><span></span>nikola init
+</pre>
+
+
+<pre class="code literal-block"><span></span>    <span class="n">Creating</span> <span class="n">Nikola</span> <span class="n">Site</span>
+    <span class="o">====================</span>
+
+    <span class="n">This</span> <span class="n">is</span> <span class="n">Nikola</span> <span class="n">v7</span><span class="mf">.8.3</span><span class="p">.</span>  <span class="n">We</span> <span class="n">will</span> <span class="n">now</span> <span class="n">ask</span> <span class="n">you</span> <span class="n">a</span> <span class="n">few</span> <span class="n">easy</span> <span class="n">questions</span> <span class="n">about</span> <span class="n">your</span> <span class="n">new</span> <span class="n">site</span><span class="p">.</span>
+    <span class="n">If</span> <span class="n">you</span> <span class="k">do</span> <span class="n">not</span> <span class="n">want</span> <span class="n">to</span> <span class="n">answer</span> <span class="n">and</span> <span class="n">want</span> <span class="n">to</span> <span class="n">go</span> <span class="n">with</span> <span class="n">the</span> <span class="n">defaults</span> <span class="n">instead</span><span class="p">,</span> <span class="n">simply</span> <span class="n">restart</span> <span class="n">with</span> <span class="n">the</span> <span class="err">`</span><span class="o">-</span><span class="n">q</span><span class="err">`</span> <span class="n">parameter</span><span class="p">.</span>
+    <span class="o">---</span> <span class="n">Questions</span> <span class="n">about</span> <span class="n">the</span> <span class="n">site</span> <span class="o">---</span>
+    <span class="nl">Destination</span><span class="p">:</span> <span class="p">.</span>
+    <span class="n">Site</span> <span class="n">title</span> <span class="p">[</span><span class="n">My</span> <span class="n">Nikola</span> <span class="n">Site</span><span class="p">]</span><span class="o">:</span> <span class="n">Muerte</span> <span class="n">por</span> <span class="n">Checklist</span>
+    <span class="n">Site</span> <span class="n">author</span> <span class="p">[</span><span class="n">Nikola</span> <span class="n">Tesla</span><span class="p">]</span><span class="o">:</span> <span class="n">David</span> <span class="n">Vázquez</span>
+    <span class="n">Site</span> <span class="n">author</span><span class="err">'</span><span class="n">s</span> <span class="n">e</span><span class="o">-</span><span class="n">mail</span> <span class="p">[</span><span class="n">n</span><span class="p">.</span><span class="n">tesla</span><span class="p">@</span><span class="n">example</span><span class="p">.</span><span class="n">com</span><span class="p">]</span><span class="o">:</span> <span class="n">david</span><span class="p">.</span><span class="n">vazquezgijon</span><span class="p">@</span><span class="n">gmail</span><span class="p">.</span><span class="n">com</span>
+    <span class="n">Site</span> <span class="n">description</span> <span class="p">[</span><span class="n">This</span> <span class="n">is</span> <span class="n">a</span> <span class="n">demo</span> <span class="n">site</span> <span class="k">for</span> <span class="n">Nikola</span><span class="p">.]</span><span class="o">:</span> <span class="n">Un</span> <span class="n">blog</span> <span class="n">personal</span><span class="p">.</span>
+    <span class="n">Site</span> <span class="n">URL</span> <span class="p">[</span><span class="nl">https</span><span class="p">:</span><span class="c1">//example.com/]: https://davidvg.github.io</span>
+        <span class="n">The</span> <span class="n">URL</span> <span class="n">does</span> <span class="n">not</span> <span class="n">end</span> <span class="k">in</span> <span class="sc">'/'</span> <span class="o">--</span> <span class="n">adding</span> <span class="n">it</span><span class="p">.</span>
+    <span class="n">Enable</span> <span class="n">pretty</span> <span class="n">URLs</span> <span class="p">(</span><span class="o">/</span><span class="n">page</span><span class="o">/</span> <span class="n">instead</span> <span class="n">of</span> <span class="o">/</span><span class="n">page</span><span class="p">.</span><span class="n">html</span><span class="p">)</span> <span class="n">that</span> <span class="n">don</span><span class="err">'</span><span class="n">t</span> <span class="n">need</span> <span class="n">web</span> <span class="n">server</span> <span class="n">configuration</span><span class="o">?</span> <span class="p">[</span><span class="n">Y</span><span class="o">/</span><span class="n">n</span><span class="p">]</span> 
+    <span class="o">---</span> <span class="n">Questions</span> <span class="n">about</span> <span class="n">languages</span> <span class="n">and</span> <span class="n">locales</span> <span class="o">---</span>
+    <span class="n">We</span> <span class="n">will</span> <span class="n">now</span> <span class="n">ask</span> <span class="n">you</span> <span class="n">to</span> <span class="n">provide</span> <span class="n">the</span> <span class="n">list</span> <span class="n">of</span> <span class="n">languages</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">use</span><span class="p">.</span>
+    <span class="n">Please</span> <span class="n">list</span> <span class="n">all</span> <span class="n">the</span> <span class="n">desired</span> <span class="n">languages</span><span class="p">,</span> <span class="n">comma</span><span class="o">-</span><span class="n">separated</span><span class="p">,</span> <span class="n">using</span> <span class="n">ISO</span> <span class="mi">639</span><span class="o">-</span><span class="mi">1</span> <span class="n">codes</span><span class="p">.</span>  <span class="n">The</span> <span class="n">first</span> <span class="n">language</span> <span class="n">will</span> <span class="n">be</span> <span class="n">used</span> <span class="n">as</span> <span class="n">the</span> <span class="k">default</span><span class="p">.</span>
+    <span class="n">Type</span> <span class="sc">'?'</span> <span class="p">(</span><span class="n">a</span> <span class="n">question</span> <span class="n">mark</span><span class="p">,</span> <span class="n">sans</span> <span class="n">quotes</span><span class="p">)</span> <span class="n">to</span> <span class="n">list</span> <span class="n">available</span> <span class="n">languages</span><span class="p">.</span>
+    <span class="n">Language</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">to</span> <span class="n">use</span> <span class="p">[</span><span class="n">en</span><span class="p">]</span><span class="o">:</span> <span class="n">es</span>
+
+    <span class="n">Please</span> <span class="n">choose</span> <span class="n">the</span> <span class="n">correct</span> <span class="n">time</span> <span class="n">zone</span> <span class="k">for</span> <span class="n">your</span> <span class="n">blog</span><span class="p">.</span> <span class="n">Nikola</span> <span class="n">uses</span> <span class="n">the</span> <span class="n">tz</span> <span class="n">database</span><span class="p">.</span>
+    <span class="n">You</span> <span class="n">can</span> <span class="n">find</span> <span class="n">your</span> <span class="n">time</span> <span class="n">zone</span> <span class="nl">here</span><span class="p">:</span>
+    <span class="nl">https</span><span class="p">:</span><span class="c1">//en.wikipedia.org/wiki/List_of_tz_database_time_zones</span>
+
+    <span class="n">Time</span> <span class="n">zone</span> <span class="p">[</span><span class="n">UTC</span><span class="p">]</span><span class="o">:</span> <span class="n">Europe</span><span class="o">/</span><span class="n">Madrid</span>
+        <span class="n">Current</span> <span class="n">time</span> <span class="k">in</span> <span class="n">Europe</span><span class="o">/</span><span class="nl">Madrid</span><span class="p">:</span> <span class="mi">18</span><span class="o">:</span><span class="mi">26</span><span class="o">:</span><span class="mo">07</span>
+    <span class="n">Use</span> <span class="n">this</span> <span class="n">time</span> <span class="n">zone</span><span class="o">?</span> <span class="p">[</span><span class="n">Y</span><span class="o">/</span><span class="n">n</span><span class="p">]</span> 
+    <span class="o">---</span> <span class="n">Questions</span> <span class="n">about</span> <span class="n">comments</span> <span class="o">---</span>
+    <span class="n">You</span> <span class="n">can</span> <span class="n">configure</span> <span class="n">comments</span> <span class="n">now</span><span class="p">.</span>  <span class="n">Type</span> <span class="sc">'?'</span> <span class="p">(</span><span class="n">a</span> <span class="n">question</span> <span class="n">mark</span><span class="p">,</span> <span class="n">sans</span> <span class="n">quotes</span><span class="p">)</span> <span class="n">to</span> <span class="n">list</span> <span class="n">available</span> <span class="n">comment</span> <span class="n">systems</span><span class="p">.</span>  <span class="n">If</span> <span class="n">you</span> <span class="k">do</span> <span class="n">not</span> <span class="n">want</span> <span class="n">any</span> <span class="n">comments</span><span class="p">,</span> <span class="n">just</span> <span class="n">leave</span> <span class="n">the</span> <span class="n">field</span> <span class="n">blank</span><span class="p">.</span>
+    <span class="n">Comment</span> <span class="nl">system</span><span class="p">:</span> 
+
+    <span class="n">That</span><span class="err">'</span><span class="n">s</span> <span class="n">it</span><span class="p">,</span> <span class="n">Nikola</span> <span class="n">is</span> <span class="n">now</span> <span class="n">configured</span><span class="p">.</span>  <span class="n">Make</span> <span class="n">sure</span> <span class="n">to</span> <span class="n">edit</span> <span class="n">conf</span><span class="p">.</span><span class="n">py</span> <span class="n">to</span> <span class="n">your</span> <span class="n">liking</span><span class="p">.</span>
+    <span class="n">If</span> <span class="n">you</span> <span class="n">are</span> <span class="n">looking</span> <span class="k">for</span> <span class="n">themes</span> <span class="n">and</span> <span class="n">addons</span><span class="p">,</span> <span class="n">check</span> <span class="k">out</span> <span class="nl">https</span><span class="p">:</span><span class="c1">//themes.getnikola.com/ and https://plugins.getnikola.com/.</span>
+    <span class="n">Have</span> <span class="n">fun</span><span class="o">!</span>
+    <span class="p">[</span><span class="mi">2017</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mi">25</span><span class="nl">T17</span><span class="p">:</span><span class="mi">26</span><span class="o">:</span><span class="mi">14</span><span class="n">Z</span><span class="p">]</span> <span class="nl">INFO</span><span class="p">:</span> <span class="nl">init</span><span class="p">:</span> <span class="n">Created</span> <span class="n">empty</span> <span class="n">site</span> <span class="n">at</span> <span class="p">..</span>
+</pre>
+
+
+<p>Las diferentes preguntas que nos hace el script son:</p>
+<ul>
+<li>
+<code>Destination</code>: Dónde se va a ubicar la raíz del blog. Es la ubicación a la que se refieren las url relativas en el blog. Si nos ubicamos en el directorio donde se va a alojar el blog, la opción más cómoda es <code>.</code> (un punto).</li>
+<li>
+<code>Site title</code>: El título del blog.</li>
+<li>
+<code>Site author</code>: El nombre del autor del blog.</li>
+<li>
+<code>Site author's e-mail</code>: Correo electrónico del autor.</li>
+<li>
+<code>Site description</code>: Descripción del blog.</li>
+<li>
+<code>Site URL</code>: La dirección url del blog. Como vamos a alojarlo en GitHub Pages, escribiremos la dirección de la página de usuario: <code>https://davidvg.github.io/</code>
+</li>
+<li>
+<code>Enable pretty URLs</code>: <code>Y</code> o símplemente <code>Enter</code>.</li>
+<li>
+<code>Language(s) to use [en]</code>: Como los posts se van a escribir -en un principio- sólo en español, escribimos <code>es</code>.</li>
+<li>
+<code>Time Zone [UTC]</code>: Introducimos la zona horaria: <code>Europe/Madrid</code> y comprobamos que la fecha y hora que nos da el script son correctas.</li>
+<li>
+<code>Comment system</code>: De momento no se va a instalar ningún sistema de comentarios. Si se quisiera uno, se escribiría el nombre del mismo (disqus...)</li>
+</ul>
+<p>Todos estos parámetros se pueden modificar en el archivo <code>conf.py</code>.</p>
+<p>El blog ya está creado, y si quisiéramos verlo (aunque está vacío de contenido), podríamos escribir en la terminal <code>nikola github_deploy</code>.</p>
+<h3>Configuración de Nikola</h3>
+<p>Se pueden personalizar algunas opciones para hacerlas más apropiadas a nuestro uso. Para ello basta con editar el archivo <code>conf.py</code>.</p>
+<h4>Formatos de archivo</h4>
+<p>El contenido del blog se va a componer principalmente de archivos Markdown para entradas normales y <em>notebooks</em> de iPython/Jupyter.</p>
+<p>Nikola tiene un conjunto de tipos de archivo que se pueden utilizar para crear posts y páginas. Estos se definen en el archivo <code>conf.py</code> en las variables <code>POSTS</code> y <code>PAGES</code>, a las que añadimos una línea por cada tipo de archivo que queramos añadir. En mi caso, tras añadir las dos primeras líneas, queda:</p>
+<pre class="code literal-block"><span></span><span class="n">POSTS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="s2">"posts/*.md"</span><span class="p">,</span> <span class="s2">"posts"</span><span class="p">,</span> <span class="s2">"posts.tmpl"</span> <span class="p">),</span>
+    <span class="p">(</span><span class="s2">"posts/*.ipynb"</span><span class="p">,</span> <span class="s2">"posts"</span><span class="p">,</span> <span class="s2">"posts.tmpl"</span> <span class="p">),</span>
+    <span class="p">(</span><span class="s2">"posts/*.rst"</span><span class="p">,</span> <span class="s2">"posts"</span><span class="p">,</span> <span class="s2">"posts.tmpl"</span> <span class="p">),</span>
+    <span class="p">(</span><span class="s2">"posts/*.txt"</span><span class="p">,</span> <span class="s2">"posts"</span><span class="p">,</span> <span class="s2">"posts.tmpl"</span> <span class="p">),</span>
+    <span class="p">(</span><span class="s2">"posts/*.html"</span><span class="p">,</span> <span class="s2">"posts"</span><span class="p">,</span> <span class="s2">"posts.tmpl"</span> <span class="p">),</span>
+<span class="p">)</span>
+<span class="n">PAGES</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="s2">"pages/*.md"</span><span class="p">,</span> <span class="s2">"pages"</span><span class="p">,</span> <span class="s2">"story.tmpl"</span> <span class="p">),</span>
+    <span class="p">(</span><span class="s2">"pages/*.ipynb"</span><span class="p">,</span> <span class="s2">"pages"</span><span class="p">,</span> <span class="s2">"story.tmpl"</span> <span class="p">),</span>
+    <span class="p">(</span><span class="s2">"pages/*.rst"</span><span class="p">,</span> <span class="s2">"pages"</span><span class="p">,</span> <span class="s2">"story.tmpl"</span> <span class="p">),</span>
+    <span class="p">(</span><span class="s2">"pages/*.txt"</span><span class="p">,</span> <span class="s2">"pages"</span><span class="p">,</span> <span class="s2">"story.tmpl"</span> <span class="p">),</span>
+    <span class="p">(</span><span class="s2">"pages/*.html"</span><span class="p">,</span> <span class="s2">"pages"</span><span class="p">,</span> <span class="s2">"story.tmpl"</span> <span class="p">),</span>
+<span class="p">)</span>
+</pre>
+
+
+<p>Al colocar la opción <code>posts/*.md</code> en la primera línea, Nikola considera que éste será el formato por defecto para los posts.</p>
+<h4>Formato de fecha</h4>
+<p>Por defecto la fecha de publicación de los posts aparece con formato <code>YYYY-MM-DD HH:MM</code>. Yo prefiero que sólo aparezca la fecha, por lo que se pueden modificar en el archivo de configuración las variables siguientes:</p>
+<pre class="code literal-block"><span></span><span class="n">DATE_FORMAT</span> <span class="o">=</span> <span class="s1">'%Y-%m-</span><span class="si">%d</span><span class="s1">'</span>
+<span class="n">JS_DATE_FORMAT</span> <span class="o">=</span> <span class="s1">'YYYY-MM-DD'</span>
+</pre>
+
+
+<h3>Creación del primer post</h3>
+<p>Para crear un post, simplemente escribimos en la terminal:</p>
+<pre class="code literal-block"><span></span>nikola new_post
+</pre>
+
+
+<p>Como el primer tipo de archivo de la variable <code>POSTS</code> era <code>md</code>, por defecto se creará un archivo de Markdown. Se puede definir otro tipo de archivo usando:</p>
+<pre class="code literal-block"><span></span>nikola new_post -f &lt;tipo de archivo&gt;
+</pre>
+
+
+<p>Por defecto los posts se almacenan en la carpeta <code>/posts/</code>.</p>
+<p>La cabecera del archivo contiene información básica sobre el post, como la dirección url del post que se añadirá a la url base (<em>slug</em>), las etiquetas del post, etc.</p>
+<p>Un detalle interesante es que si se añade la etiqueta <code>draft</code> el post se trata como un borrador y no aparece publicado en el blog.</p>
+<p>Un detalle muy interesante es que Nikola permite previsualizar el post a medida que se escribe. Para ello, en otra terminal, escribimos</p>
+<pre class="code literal-block"><span></span>nikola auto -b
+</pre>
+
+
+<p>El comando anterior abre un navegador y nos previsualiza <em>en tiempo real</em> los cambios que vayamos haciendo el el post. Sin embargo, no funciona si hemos añadido la etiqueta <code>draft</code>.</p>
+<h4>Publicando el post</h4>
+<p>Una vez hayamos escrito el post, Nikola se encarga de todos los pasos necesarios para publicarlo en GitHub Pages con un único comando:</p>
+<pre class="code literal-block"><span></span>nikola github_deploy
+</pre>
+
+
+<h4>Teasers: mostrar sólo el principio del artículo</h4>
+<p>Si los posts publicados son largos, navegar por la página se hace engorroso. Para ello podemos indicar un punto a partir del cual se corta el post y se incluye un enlace al artículo completo.</p>
+<p>En el punto donde queramos cortar el post, añadimos:</p>
+<pre class="code literal-block"><span></span><span class="cp">&lt;! TEASER_END --&gt;</span>
+</pre>
+
+
+<p>Para que se aplique a los artículos, se debe modificar el archivo <code>conf.py</code>, descomentando la línea donde se define la variable <code>INDEX_TEASERS</code> y cambiándola a <code>True</code>:</p>
+<pre class="code literal-block"><span></span><span class="n">INDEX_TEASERS</span> <span class="o">=</span> <span class="bp">True</span>
+</pre>
+
+
+<h3>Futuros ajustes</h3>
+<p>Hasta aquí la configuración de Nikola es básica. Quedan algunas cosas como:</p>
+<ul>
+<li>Sistema de comentarios.</li>
+<li>Creación de una página de Wikis.</li>
+<li>Personalización del aspecto.</li>
+<li>etc.</li>
+</ul>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/blog/" rel="tag">blog</a></li>
+            <li><a class="tag p-category" href="../../categories/nikola/" rel="tag">Nikola</a></li>
+            <li><a class="tag p-category" href="../../categories/tutorial/" rel="tag">tutorial</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="next">
+                <a href="../nikola-anadir-una-pagina-de-wikis/" rel="next" title="Nikola - Añadir una página de wikis">Siguiente publicación</a>
+            </li>
+        </ul></nav></aside></article>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2019         <a href="mailto:david.vazquezgijon@gmail.com">David Vázquez</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD");
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>

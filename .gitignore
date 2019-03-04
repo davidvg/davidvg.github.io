@@ -1,0 +1,9 @@
+.git/**
+*/*.swp
+__pycache__/**
+.doit.db
+
+# Folder for iPython Notebooks data
+data/**
+cache/pages cache/posts cache/webassets
+cache/**

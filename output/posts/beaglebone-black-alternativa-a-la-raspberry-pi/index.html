@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BeagleBone Black, una alternativa a la Raspberry Pi | Muerte por Checklist</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="es" href="../../rss.xml">
+<link rel="canonical" href="https://davidvg.github.io/posts/beaglebone-black-alternativa-a-la-raspberry-pi/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="David Vázquez">
+<link rel="prev" href="../nikola-anadir-una-pagina-de-wikis/" title="Nikola - Añadir una página de wikis" type="text/html">
+<link rel="next" href="../jupiter-180513/" title="Júpiter" type="text/html">
+<meta property="og:site_name" content="Muerte por Checklist">
+<meta property="og:title" content="BeagleBone Black, una alternativa a la Raspberry Pi">
+<meta property="og:url" content="https://davidvg.github.io/posts/beaglebone-black-alternativa-a-la-raspberry-pi/">
+<meta property="og:description" content="Introducción
+La BeagleBone Black es una computadora open hardware similar a la más conocida Raspberry Pi. Es la versión de bajo costo de la familia BeagleBoard, fabricada por la mítica Texas Instrumen">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2017-09-10T12:30:00+02:00">
+<meta property="article:tag" content="beaglebone">
+<meta property="article:tag" content="openhardware">
+<meta property="article:tag" content="tutorial">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Mostrar navegación</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://davidvg.github.io/">
+
+                <span id="blog-title">Muerte por Checklist</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../../pages/wiki/index.html">Wiki</a>
+                </li>
+<li>
+<a href="../../archive.html">Archivo</a>
+                </li>
+<li>
+<a href="../../categories/">Etiquetas</a>
+                </li>
+<li>
+<a href="../../rss.xml">Canal RSS</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="index.md" id="sourcelink">Código fuente</a>
+    </li>
+
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">BeagleBone Black, una alternativa a la Raspberry Pi</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                    David Vázquez
+            </span></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2017-09-10T12:30:00+02:00" itemprop="datePublished" title="2017-09-10">2017-09-10</time></a>
+            </p>
+            
+        <p class="sourceline"><a href="index.md" class="sourcelink">Código fuente</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<h3>Introducción</h3>
+<p>La BeagleBone Black es una computadora <a href="https://es.wikipedia.org/wiki/Hardware_Libre">open hardware</a> similar a la más conocida <a href="www.raspberrypi.org">Raspberry Pi</a>. Es la versión de bajo costo de la familia <a href="https://beagleboard.org">BeagleBoard</a>, fabricada por la mítica <a href="https:/https:///www.ti.com">Texas Instruments</a>. Entre sus características más interesantes están:</p>
+<ul>
+<li>Procesador Sitara AM3358 a 1 GHz.</li>
+<li>512 MB de RAM DDR3L a 800 MHz.</li>
+<li>Memoria interna eMMC de 4 GB.</li>
+<li>3 canales <a href="https://es.wikipedia.org/wiki/Modulaci%C3%B3n_por_ancho_de_pulsos">PWM</a>.</li>
+<li>7 entradas de <a href="https://es.wikipedia.org/wiki/Conversi%C3%B3n_anal%C3%B3gica-digital">Conversor Analógico/Digital (ADC)</a> de 10 bit.</li>
+<li>3 canales <a href="https://es.wikipedia.org/wiki/I%C2%B2C">I2C</a>.</li>
+<li>2 canales <a href="https://es.wikipedia.org/wiki/Serial_Peripheral_Interface">SPI</a>.</li>
+<li>5 puertos serie <a href="https://es.wikipedia.org/wiki/Universal_Asynchronous_Receiver-Transmitter">UART</a> (uno de ellos sólo con función de trasferir datos, no de recibir)</li>
+<li>3 módulos descodificadores de <a href="http://www.ni.com/tutorial/7109/es/">encoder de cuadratura</a> (enhanced quadrature encoder pulse, eQEP), aunque para usarlos todos es necesario deshabilitar otros módulos que causan interferencia en los pines.</li>
+<li>2 <a href="https://es.wikipedia.org/wiki/Sistma_de_tiempo_real">Unidades en Tiempo Real Programables (PRU)</a>.</li>
+<li>Conexión WiFi y Bluetooth integradas en la versión [Wireless.</li>
+</ul>
+<p>A nivel hardware existen más elementos para algunos de los dispositivos anteriores, aunque sólo parte de ellos están disponibles debido a interferencia entre pines y multiplexado; por ejemplo, el procesador tiene 6 canales UART, de los que sólo están disponibles desde los pines 5 de ellos.</p>
+<p>Este post resume los pasos que han sido necesarios para poner en funcionamiento la Beaglebone Black, tanto en su versión original (revisión C.1) como la versión Wireless. A partir de ahora, me referiré a la BeagleBone Black como BBB y a su versión Wireless como BBBW.</p>
+<p>Todos los pasos se harán para un sistema GNU/Linux Ubuntu 16.04, preferentemente usando la línea de comandos.</p>
+<!-- TEASER_END -->
+
+<h3>Instalación del SO</h3>
+<p>El artículo describirá la instalación de la versión 8.7 de Debian (Jessie); en el momento de escribir este post ya hay disponible una versión más moderna, la 9.1 Stretch, pero no debería haber diferencias en el proceso de instalación.</p>
+<p>Todas las imágenes se encuentran para descargar en https://beagleboard.org/latest-images. Para la BBB y la BBBW la imagen es la misma, y aparece la primera de la lista bajo el apartado Jessie for BeagleBone via microSD card. En el momento de escribir el post la imagen más reciente es la <code>bone-debian-9.1-lxqt-armhf-2017-08-31-4gb.img.xz</code>. La versión IoT (Internet of Things) no utiliza interfaz gráfica y deja más espacio libre, por lo que puede ser más adecuada para muchas aplicaciones.</p>
+<p>El archivo descargado está comprimido, por lo que el primer paso es descomprimirlo (mediante click derecho o mediante <code>tar xf archivo.xz</code>) para extraer la imagen <code>.img</code>.</p>
+<p>La instalación se hace usando una tarjeta microSD. Es recomendable que sea de alta velocidad, y con una capacidad de al menos 2GB. Yo he usado una Kingston de 4GB. Una vez conectada, debemos averiguar dónde se ha montado mediante el comando <code>df</code>. El punto de montaje será <code>/dev/sdX</code>, donde <code>sdX</code> puede ser <code>sda</code>, <code>sdb</code>, etc. Una vez sabemos dónde se ha montado, desmontamos la unidad mediante <code>umount /dev/sdX</code>, utilizando el punto de montaje que vimos anteriormente.</p>
+<p>La imagen descomprimida debe ser transferida a la tarjeta SD. Para ello, introducimos en la línea de comando</p>
+<pre class="code literal-block"><span></span>dd <span class="k">if</span><span class="o">=</span>/ruta/a/bone-debian-*.img <span class="nv">of</span><span class="o">=</span>/dev/sdX <span class="nv">bs</span><span class="o">=</span>1m
+</pre>
+
+
+<p>o bien usando <a href="https://etcher.io/">Etcher</a>, una aplicación específica para ello. </p>
+<p>Una vez transferida la imagen a la tarjeta microSD, y con la BBB apagada, se introduce en la ranura microSD de la placa. Al encender la placa, ésta arrancará desde la SD, ejecutándose el SO que se encuentra en la misma. Es importante tener en cuenta que se ejecuta el sistema operativo desde la tarjeta microSD y no se está flasheando en la memoria eMMC de la BBB (al contrario que ocurría con versiones anteriores, donde la memoria eMMC se flasheaba automáticamente al iniciar con la tarjeta introducida)</p>
+<p>El SO habrá terminado de cargarse cuando en el primero de los LED de la BBB (LED USER0) parpadee con el patrón de latido (heartbeat) del kernel de Linux. En este momento, utilizando un cable USB, podremos conectarnos a la BBB via ssh. Por defecto existen dos usuarios creados en la BBB: root y debian; yo no soy partidario de conectarse como root, pues el sistema no solicita la contraseña para realizar operaciones, y por tanto es más sensible a ataques.</p>
+<p>Para conectarse como debian desde GNU/Linux:</p>
+<pre class="code literal-block"><span></span>ssh debian@192.168.7.2
+</pre>
+
+
+<blockquote>
+<p>Nota: parece ser que desde la versión 2017-02-19 se ha <a href="http://elinux.org/Beagleboard:BeagleBoneBlack_Debian#i_take_full_responsibility_for_knowing_my_beagle_is_now_insecure">eliminado la opción de no introducir la contraseña para el usuario root por defecto</a>.</p>
+</blockquote>
+<p>Si no fuéramos capaces de conectar con la BBB, es probable que tengamos deshabilitadas las conexiones cableadas en el ordenador (sobre todo si se trata de un equipo conectado a Internet únicamente mediante WiFi), por lo que en el gestor de conexiones debemos habilitarlas.</p>
+<p>También es posible la conexión mediante WiFi, usando la IP <code>192.168.8.1</code>.</p>
+<p>La contraseña por defecto es <code>temppwd</code>. Para cambiarla (si no, da igual que requiramos contraseña) introducimos el comando <code>passwd</code>. Si todo va bien, nos hará la pregunta de si queremos confiar en el equipo (responderemos <code>yes</code>) y ya estaremos conectados a la BBB.</p>
+<p>Dado que estamos ejecutando el SO desde la tarjeta, todo lo que hagamos desaparecerá cuando apaguemos la placa. Si queremos instalar el SO definitivamente en la memoria eMMC de la BBB, debemos editar el archivo <code>/boot/uEnv.txt</code>, descomentando la línea al final del archivo, donde se incluye el comando <code>cmdline</code> siguiente:</p>
+<pre class="code literal-block"><span></span><span class="c1">##enable BBB: eMMC Flasher:</span>
+<span class="c1">#cmdline=init=/opt/scripts/tools/eMMC/init-eMMC-flasher-v3.sh</span>
+</pre>
+
+
+<!--
+>El archivo `/boot/uEnv.txt` es el que guarda la configuración de arranque de la placa.  Gestiona, entre otras cosas, qué *overlays* (lo siento, es una de esas palabras para las que no encuentro una traducción adecuada) se cargan por defecto.
+Resumiendo mucho, un *overlay*, o más concretamente un [Device Tree Overlay](https://learn.adafruit.com/introduction-to-the-beaglebone-black-device-tree/device-tree-overlays), es una descripción del modo de funcionamiento de cada pin de la placa (para qué se usa), en función de qué hardware/software hayamos activado. Cada pin puede tener varios modos (usos), hasta 8, en función del multiplexado (*pinmux*) que hayamos definido. Además, el *overlay* mapea los pines con las señales que son necesarias para los diferentes módulos hardware que se activen, de modo que indica qué pin se emplea para cada señal. Un *overlay* se define en un archivo `.dts`(
+-->
+
+<p>Para flashear la eMMC es recomendable alimentar la placa desde un adaptador de corriente en lugar de usar la alimentación USB, para asegurarse de que no se interrumpa el proceso sin haber concluido.
+La siguiente vez que se arranque desde la microSD, comenzará el flasheo, y los 4 LED de la placa empezarán a parpadear secuencialmente. El proceso puede tardar entre 5 y 25 minutos, y cuando los 4 LED se queden encendidos permanentemente o bien se apaguen, la operación habrá finalizado. Retirar la tarjeta y encender la BBB.</p>
+<h3>Configuración de la WiFi</h3>
+<p>La BBB en su versión original (no Wireless) no dispone de conexión inalámbrica, por lo que si se quiere disponer de dicha conexión es necesario utilizar un pincho WiFi USB. En mi caso, utilizo un <a href="http://www.edimax.com/edimax/merchandise/merchandise_detail/data/edimax/in/wireless_adapters_n150/ew-7811un/">Edimax EW-7811UN</a>, que hasta ahora nunca me ha dado problemas.</p>
+<p>Con el pincho WiFi insertado, comprobar si aparece la conexión <code>wlan0</code> mediante le comando <code>ifconfig</code>. Debería aparecer, aunque sin una dirección IP asignada, y por tanto sin configurar.</p>
+<p>Para configurar la conexión se puede editar el archivo <code>/etc/network/interfaces</code> siguiendo cualquiera de los muchos tutoriales que hay para ello, aunque es más recomendable utilizar el comando <code>connmanctl</code> como administrador:</p>
+<p><code>sudo connmanctl</code></p>
+<p>Aparece el <em>prompt</em> del comando, indicándonos que estamos dentro del configurador, y en el que procederemos a realizar los pasos necesarios. El primero de ellos es activar la interfaz WiFi, si no está activada:</p>
+<p><code>connmanctl&gt; enable wifi</code></p>
+<p>Evidentemente, la parte del <em>prompt</em>, es decir <code>connmactl&gt;</code>, no debemos introducirla.</p>
+<p>Probablemente obtendremos un error, indicando que la conexión ya está activa. Lo ignoraremos y escanearemos las conexiones inalámbricas existentes, buscando aquella a la que nos queremos conectar:</p>
+<p><code>connmanctl&gt; scan wifi</code></p>
+<p>Si todo ha ido bien, obtendremos el mensaje <code>Scan completed for wifi</code>, y ya podemos examinar las redes disponibles:</p>
+<p><code>connmanctl&gt; services</code></p>
+<p>Obtendremos un listado de conexiones WiFi disponibles, mostrando una por línea. Buscaremos aquella a la que nos queremos conectar y copiaremos su <em>hash</em>, la secuencia alfanumérica a la derecha del nombre de la conexión y que comienza por <code>wifi_</code>. A continuación activaremos el agente de red:</p>
+<p><code>connmanctl&gt; agent on</code></p>
+<p>El siguiente (y último paso, si todo va bien) es crear la conexión, mediante el comando:</p>
+<p><code>connmanctl&gt; connect &lt;hash&gt;</code></p>
+<p>donde <code>&lt;hash&gt;</code> es el <em>hash</em> que copiamos anteriormente. Si la conexión está protegida mediante contraseña, en este momento nos pedirá que la introduzcamos.</p>
+<p>En este punto, si saliéramos del configurador mediante <code>exit</code> y examináramos las conexiones con <code>ifconfig</code>, debería aparecer la conexión <code>wlan0</code> con una IP asignada. Esta IP es dinámica, y se modificará de forma aleatoria, lo cual no es muy útil si vamos a conectarnos a la BBB mediante WiFi. Para asignarle una IP estática, sin salir del configurador, introducimos el comando siguiente:</p>
+<p><code>connmanctl&gt; config &lt;hash&gt; --ipv4 manual &lt;IP&gt; &lt;netmask&gt; &lt;gateway&gt; --nameservers 8.8.8.8</code></p>
+<p>donde <code>&lt;hash&gt;</code> es el mismo que copiamos anteriormente; <code>&lt;IP&gt;</code> es la dirección IP que queremos asisgnar a la BBB de forma permanente, en mi caso <code>192.168.2.104</code>; <code>&lt;netmask&gt;</code> es la máscara de red (<code>255.255.255.0</code>), y <code>gateway</code> es, para evitar tecnicismos, la dirección del router, en mi caso <code>192.168.2.1</code>. Obviamente, estos valores varían con el router utilizado.</p>
+<h3>Referencias</h3>
+<p>http://elinux.org/Beagleboard:BeagleBoneBlack_Debian</p>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/beaglebone/" rel="tag">beaglebone</a></li>
+            <li><a class="tag p-category" href="../../categories/openhardware/" rel="tag">openhardware</a></li>
+            <li><a class="tag p-category" href="../../categories/tutorial/" rel="tag">tutorial</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../nikola-anadir-una-pagina-de-wikis/" rel="prev" title="Nikola - Añadir una página de wikis">Publicación anterior</a>
+            </li>
+            <li class="next">
+                <a href="../jupiter-180513/" rel="next" title="Júpiter">Siguiente publicación</a>
+            </li>
+        </ul></nav></aside></article>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2019         <a href="mailto:david.vazquezgijon@gmail.com">David Vázquez</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("es");
+    fancydates(0, "YYYY-MM-DD");
+    </script><!-- end fancy dates --><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Muerte por Checklist (Publicaciones sobre BeagleBone)</title><link>https://davidvg.github.io/</link><description></description><atom:link href="https://davidvg.github.io/categories/cat_beaglebone.xml" rel="self" type="application/rss+xml"></atom:link><language>es</language><lastBuildDate>Mon, 04 Mar 2019 18:12:53 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>BeagleBone Black, una alternativa a la Raspberry Pi</title><link>https://davidvg.github.io/posts/beaglebone-black-alternativa-a-la-raspberry-pi/</link><dc:creator>David Vázquez</dc:creator><description>&lt;div&gt;&lt;h3&gt;Introducción&lt;/h3&gt;
+&lt;p&gt;La BeagleBone Black es una computadora &lt;a href="https://es.wikipedia.org/wiki/Hardware_Libre"&gt;open hardware&lt;/a&gt; similar a la más conocida &lt;a href="https://davidvg.github.io/posts/beaglebone-black-alternativa-a-la-raspberry-pi/www.raspberrypi.org"&gt;Raspberry Pi&lt;/a&gt;. Es la versión de bajo costo de la familia &lt;a href="https://beagleboard.org"&gt;BeagleBoard&lt;/a&gt;, fabricada por la mítica &lt;a href="https://davidvg.github.io/https:///www.ti.com"&gt;Texas Instruments&lt;/a&gt;. Entre sus características más interesantes están:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Procesador Sitara AM3358 a 1 GHz.&lt;/li&gt;
+&lt;li&gt;512 MB de RAM DDR3L a 800 MHz.&lt;/li&gt;
+&lt;li&gt;Memoria interna eMMC de 4 GB.&lt;/li&gt;
+&lt;li&gt;3 canales &lt;a href="https://es.wikipedia.org/wiki/Modulaci%C3%B3n_por_ancho_de_pulsos"&gt;PWM&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;7 entradas de &lt;a href="https://es.wikipedia.org/wiki/Conversi%C3%B3n_anal%C3%B3gica-digital"&gt;Conversor Analógico/Digital (ADC)&lt;/a&gt; de 10 bit.&lt;/li&gt;
+&lt;li&gt;3 canales &lt;a href="https://es.wikipedia.org/wiki/I%C2%B2C"&gt;I2C&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;2 canales &lt;a href="https://es.wikipedia.org/wiki/Serial_Peripheral_Interface"&gt;SPI&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;5 puertos serie &lt;a href="https://es.wikipedia.org/wiki/Universal_Asynchronous_Receiver-Transmitter"&gt;UART&lt;/a&gt; (uno de ellos sólo con función de trasferir datos, no de recibir)&lt;/li&gt;
+&lt;li&gt;3 módulos descodificadores de &lt;a href="http://www.ni.com/tutorial/7109/es/"&gt;encoder de cuadratura&lt;/a&gt; (enhanced quadrature encoder pulse, eQEP), aunque para usarlos todos es necesario deshabilitar otros módulos que causan interferencia en los pines.&lt;/li&gt;
+&lt;li&gt;2 &lt;a href="https://es.wikipedia.org/wiki/Sistma_de_tiempo_real"&gt;Unidades en Tiempo Real Programables (PRU)&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Conexión WiFi y Bluetooth integradas en la versión [Wireless.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A nivel hardware existen más elementos para algunos de los dispositivos anteriores, aunque sólo parte de ellos están disponibles debido a interferencia entre pines y multiplexado; por ejemplo, el procesador tiene 6 canales UART, de los que sólo están disponibles desde los pines 5 de ellos.&lt;/p&gt;
+&lt;p&gt;Este post resume los pasos que han sido necesarios para poner en funcionamiento la Beaglebone Black, tanto en su versión original (revisión C.1) como la versión Wireless. A partir de ahora, me referiré a la BeagleBone Black como BBB y a su versión Wireless como BBBW.&lt;/p&gt;
+&lt;p&gt;Todos los pasos se harán para un sistema GNU/Linux Ubuntu 16.04, preferentemente usando la línea de comandos.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://davidvg.github.io/posts/beaglebone-black-alternativa-a-la-raspberry-pi/"&gt;Leer más…&lt;/a&gt; (quedan 5 minutos de lectura)&lt;/p&gt;&lt;/div&gt;</description><category>beaglebone</category><category>openhardware</category><category>tutorial</category><guid>https://davidvg.github.io/posts/beaglebone-black-alternativa-a-la-raspberry-pi/</guid><pubDate>Sun, 10 Sep 2017 10:30:00 GMT</pubDate></item></channel></rss>

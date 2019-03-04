@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Muerte por Checklist (Publicaciones sobre ROS)</title><link>https://davidvg.github.io/</link><description></description><atom:link href="https://davidvg.github.io/categories/ros.xml" rel="self" type="application/rss+xml"></atom:link><language>es</language><lastBuildDate>Mon, 04 Mar 2019 18:12:53 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Turtlebot3 y ROS Melodic en Ubuntu 18.04</title><link>https://davidvg.github.io/posts/turtlebot3-y-ros-melodic-en-ubuntu-1804/</link><dc:creator>David Vázquez</dc:creator><description>&lt;div&gt;&lt;p&gt;Al empezar a hacer pruebas con el &lt;a href="https://davidvg.github.io/posts/turtlebot3/"&gt;Turtlebot3&lt;/a&gt; empezaron a aparecer algunos problemas de compatibilidad relacionados con las diferentes versiones de ROS y Ubuntu, que se resumen en:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;El código del Turtlebot3 está escrito para la versión &lt;a href="https://wiki.ros.org/kinetic"&gt;Kinetic&lt;/a&gt; de ROS.&lt;/li&gt;
+&lt;li&gt;Kinetic es compatible con las versiones Wily (15.10) y Xenial (16.04) de Ubuntu.&lt;/li&gt;
+&lt;li&gt;En mi ordenador tengo instalado Ubuntu Bionic (18.04), versión para la que Kinetic no es compatible.&lt;/li&gt;
+&lt;li&gt;ROS Melodic, la versión que tiene soporte para Ubuntu 18.04, no tiene soporte completo para Turtlebot3 (algunos de los módulos y funciones necesarios para el Turtlebot3 aún no se han portado a Melodic)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;TL;DR&lt;/strong&gt;: La versión de ROS que puedo instalar “fácilmente” en mi sistema operativo no da soporte completo al Turtlebot3, y a la vez la versión de ROS que da soporte a Turtlebot3 no es compatible con mi sistema operativo. Incompatibilidad en ambos sentidos.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Esto me dejaba varias posibles soluciones:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Crear una &lt;a href="https://es.wikipedia.org/wiki/M%C3%A1quina_virtual"&gt;máquina virtual&lt;/a&gt; corriendo Ubuntu 16.04 e instalar ROS Kinetic.&lt;/li&gt;
+&lt;li&gt;Usar &lt;a href="https://www.docker.com/"&gt;Docker&lt;/a&gt; para crear un contenedor con Ubuntu 16.04 e instalar ROS Kinetic.&lt;/li&gt;
+&lt;li&gt;Usar una de las imágenes de &lt;a href="https://docs.docker.com/samples/library/ros/"&gt;Docker con ROS preinstalado&lt;/a&gt; con la versión Kinetic.&lt;/li&gt;
+&lt;li&gt;Usar Ubuntu 18.04 y ROS Melodic e ir solucionando los problemas a medida que surjan.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;La máquina virtual la descarté de mano, por ser más práctico usar los contenedores de Docker. Sin embargo, como en los grupos de usuarios de ROS se habla de que todo el código del Turtlebot3 se está portando poco a poco a Melodic, opté por probar con la última opción e ir resolviendo los problemas a medida que se iban &lt;del&gt;amontonando&lt;/del&gt; produciendo.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Si eso más terde me pongo..." src="https://davidvg.github.io/images/memes/ITcrowd-put-this-with-rest-of-fire.jpg" width="40%"&gt; &lt;/p&gt;
+&lt;h3&gt;Instalación de módulos no portados a Melodic&lt;/h3&gt;
+&lt;p&gt;Instalar los módulos que &lt;a href="https://index.ros.org/packages/#melodic"&gt;no estan aún portados&lt;/a&gt; resulta más fácil de lo podría pensarse. Aunque no estén disponibles para ROS Melodic, los repositorios de cada uno de ellos están disponibles en GitHub; muchos ya tienen una rama lista para ser integrada en futuras actualizaciones de Melodic, y el resto pueden descargarse y compilarse con las características del sistema que se emplee.
+Los módulos necesarios para hacer funcionar el Turtlebot3 y que no están disponibles en Melodic pero pueden instalarse desde GitHub son:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;openslam_gmapping&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;slam_gmapping&lt;/code&gt;: módulo de creación de mapas mediante &lt;em&gt;SLAM&lt;/em&gt; (&lt;em&gt;Simultaneous Localization and Mapping&lt;/em&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;hector_slam&lt;/code&gt;, &lt;code&gt;slam_karto&lt;/code&gt;: otros métodos de cartografiado utilizados por el Turtlebot.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;frontier_exploration&lt;/code&gt;: módulo de exploración de mapas.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;teleop_twist_joy&lt;/code&gt;: utilización de &lt;em&gt;joystick&lt;/em&gt; para controlar el robot.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Estos paquetes se pueden descargar o clonar en el directorio &lt;code&gt;src&lt;/code&gt; del proyecto y compilar con &lt;code&gt;catkin_make&lt;/code&gt; o &lt;code&gt;catkin build&lt;/code&gt;. El resto de paquetes disponibles para Melodic se instalan mediante el gestor de software de Ubuntu, o mediante &lt;code&gt;apt-get&lt;/code&gt; o similar.&lt;/p&gt;
+&lt;h3&gt;Mapas globales y locales&lt;/h3&gt;
+&lt;p&gt;Un error que aparece por cambios en Melodic respecto a Kinetic se produce por diferencia del criterio usado a la hora de definir la ruta a los mapas en el paquete de &lt;a href="http://emanual.robotis.com/docs/en/platform/turtlebot3/navigation/"&gt;navegación&lt;/a&gt; del Turtlebot3.&lt;/p&gt;
+&lt;p&gt;[Reproducción del error]
+[Explicación del problema]&lt;/p&gt;
+&lt;p&gt;Para solucionarlo hay que editar dos archivos dentro del directorio &lt;code&gt;src/turtlebot3_navigation/params&lt;/code&gt;, en los que se definen algunos parámetros necesarios para la navegación.&lt;/p&gt;
+&lt;p&gt;Uno de los archivos que hay que modificar en dicho directorio es &lt;code&gt;global_cost_map_params.yaml&lt;/code&gt;, eliminando las barras en&lt;code&gt;/map&lt;/code&gt; y &lt;code&gt;/base_footprint&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;global_costmap&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+  &lt;span class="n"&gt;global_frame&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;map&lt;/span&gt;
+  &lt;span class="n"&gt;robot_base_frame&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;base_footprint&lt;/span&gt;
+&lt;/pre&gt;
+
+
+&lt;p&gt;para que queden del siguiente modo (nótese la ausencia de barras delante de los parámetros):&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;global_costmap&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+  &lt;span class="n"&gt;global_frame&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;map&lt;/span&gt;
+  &lt;span class="n"&gt;robot_base_frame&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;base_footprint&lt;/span&gt;
+&lt;/pre&gt;
+
+
+&lt;p&gt;El segundo archivo a modificar es &lt;code&gt;local_costmap_params.yaml&lt;/code&gt;, eliminando las barras para que queden del siguiente modo:&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;local_costmap&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+  &lt;span class="n"&gt;global_frame&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;odom&lt;/span&gt;
+  &lt;span class="n"&gt;robot_base_frame&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;base_footprint&lt;/span&gt;
+&lt;/pre&gt;
+
+
+&lt;p&gt;Con esto los parámetros &lt;code&gt;map&lt;/code&gt;, &lt;code&gt;base_footprint&lt;/code&gt; (tanto para los parámetros globales como locales) y &lt;code&gt;odom&lt;/code&gt; se definen como relativos al propio paquete, y no como absolutos como ocurre con el caso de colocar la barra (&lt;code&gt;/&lt;/code&gt;) delante.&lt;/p&gt;
+&lt;h3&gt;Bola extra: problemas de visualización en &lt;code&gt;rviz&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;Otro problema derivado de la pantalla de alta resolución de mi portátil, un Dell XPS 13, son los &lt;a href="https://wiki.ros.org/rvi://github.com/ros-visualization/rviz/issues/1069"&gt;problemas de visualización en &lt;code&gt;rviz&lt;/code&gt;&lt;/a&gt;, el visualizador que usa ROS; además, al intentar redimensionar la ventana o al colocar otra ventana encima, no se actualiza el contenido, por lo que no es utilizable.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://davidvg.github.io/images/rviz-problema-visualizacion.png" alt="Problemas de visualización en rviz" width="60%"&gt;&lt;/p&gt;
+&lt;p&gt;Para &lt;a href="https://github.com/ros-visualization/rviz/issues/1203"&gt;solucionarlo&lt;/a&gt;, basta con exportar (para dejarlas en blanco) dos variables de entorno:&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;&lt;span&gt;&lt;/span&gt;export QT_AUTO_SCREEN_SCALE_FACTOR=
+export QT_SCREEN_SCALE_FACTORS=
+&lt;/pre&gt;
+
+
+&lt;p&gt;Con estos pasos, el entorno está plenamente funcional.&lt;/p&gt;&lt;/div&gt;</description><category>ROS</category><category>turtlebot</category><guid>https://davidvg.github.io/posts/turtlebot3-y-ros-melodic-en-ubuntu-1804/</guid><pubDate>Mon, 04 Mar 2019 16:46:03 GMT</pubDate></item></channel></rss>
