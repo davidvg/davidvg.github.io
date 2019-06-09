@@ -13,11 +13,11 @@ Esta temporada Júpiter se encuentra en [oposición](https://es.wikipedia.org/wi
 
 En la fotografía se pueden apreciar, a la izquierda, tres puntos que se corresponden con tres de las lunas de Júpiter; de izquierda a derecha, son Ganimedes, Calisto (un punto más débil que los otros) e Ío, tres de las cuatro [lunas galileanas](https://es.wikipedia.org/wiki/Sat%C3%A9lite_galileano).
 
-![Jupiter y lunas](/jupiter.jpeg)
+![Jupiter y lunas](/images/jupiter.jpeg)
 
 Como *bonus*, se puede también apreciar la cuarta luna galileana, Europa, como una pequeña zona circular algo más brillante sobre el disco de Júpiter, así como la sombra que proyecta dicha luna sobre el planeta. En el recorte ampliado de abajo se puede ver algo mejor.
 
-![Jupiter, Europa y su sombra](/jupiter_disc.jpeg)
+![Jupiter, Europa y su sombra](/images/jupiter_disc.jpeg)
 
 
 ## Datos de la toma
