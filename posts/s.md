@@ -23,6 +23,7 @@ Para diseñar el circuito decidí dibujar el esquema en [KiCad](http://www.kicad
 La simulación muestra la gráfica siguiente para los parámetros $V_S$, $V_M$ y $V_{OUT}$ cuando $V_S$ se hace variar entre $-0.44V$ y $+0.44V$.
 
 ![Plot](/images/output.jpg)
+<img alt="Plot" src="/images/output.jpg" width="40%">
 
 La simulación devuelve los siguientes valores de tensión para los principales puntos de funcionamiento:
 
