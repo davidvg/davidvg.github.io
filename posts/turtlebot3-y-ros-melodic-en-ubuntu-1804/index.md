@@ -3,7 +3,7 @@
 .. slug: turtlebot3-y-ros-melodic-en-ubuntu-1804
 .. date: 2019-03-04 17:46:03 UTC+01:00
 .. tags: turtlebot,ROS
-.. status: 
+.. status:
 .. category: robotica
 .. link: 
 .. description: 
