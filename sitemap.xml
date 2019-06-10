@@ -23,11 +23,11 @@
  </url>
  <url>
   <loc>https://davidvg.github.io/archive.html</loc>
-  <lastmod>2019-03-04T18:13:00Z</lastmod>
+  <lastmod>2019-06-10T17:44:00Z</lastmod>
  </url>
  <url>
   <loc>https://davidvg.github.io/categories/</loc>
-  <lastmod>2019-03-04T18:12:00Z</lastmod>
+  <lastmod>2019-06-10T17:44:00Z</lastmod>
  </url>
  <url>
   <loc>https://davidvg.github.io/categories/beaglebone/</loc>
@@ -54,8 +54,20 @@
   <lastmod>2019-03-04T18:12:00Z</lastmod>
  </url>
  <url>
+  <loc>https://davidvg.github.io/categories/driver/</loc>
+  <lastmod>2019-06-10T17:44:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://davidvg.github.io/categories/electronica/</loc>
+  <lastmod>2019-06-10T17:44:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://davidvg.github.io/categories/jupiter/</loc>
   <lastmod>2019-03-04T18:12:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://davidvg.github.io/categories/kicad/</loc>
+  <lastmod>2019-06-10T17:44:00Z</lastmod>
  </url>
  <url>
   <loc>https://davidvg.github.io/categories/nikola/</loc>
@@ -80,6 +92,10 @@
  <url>
   <loc>https://davidvg.github.io/categories/slam/</loc>
   <lastmod>2019-03-04T18:12:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://davidvg.github.io/categories/spice/</loc>
+  <lastmod>2019-06-10T17:44:00Z</lastmod>
  </url>
  <url>
   <loc>https://davidvg.github.io/categories/turtlebot/</loc>
@@ -108,6 +124,10 @@
  <url>
   <loc>https://davidvg.github.io/posts/nikola-github-pages-instalacion/</loc>
   <lastmod>2019-03-04T18:12:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://davidvg.github.io/posts/simulacion-circuito-lectura-tension/</loc>
+  <lastmod>2019-06-10T17:44:00Z</lastmod>
  </url>
  <url>
   <loc>https://davidvg.github.io/posts/turtlebot3-y-ros-melodic-en-ubuntu-1804/</loc>
