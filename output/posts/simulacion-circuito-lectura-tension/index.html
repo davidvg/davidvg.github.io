@@ -98,12 +98,12 @@
 
     </header><div class="e-content entry-content" itemprop="articleBody text">
     <div>
-<p>Para un proyecto de robótica que estoy comenzando, basado en versiones de los rover marcianos de NASA, necesitaba diseñar un circuito para hacer la lectura de la corriente que circula por un motor controlado mediante un driver <a href="https://www.allegromicro.com/~/media/Files/Datasheets/A4952-3-Datasheet.pdf">Allegro A4953</a>. Este driver tiene un pin LSS en el que se puede conectar una resistencia $R_S$ para medir la corriente del motor, que se obtiene simplemente dividiendo la tensión $V_S$ en la resistencia por el valor de la misma:</p>
+<p>Para un proyecto de robótica que estoy comenzando, basado en versiones de los rover marcianos de NASA, necesitaba diseñar un circuito para hacer la lectura de la corriente que circula por un motor controlado mediante un driver <a href="https://www.allegromicro.com/~/media/Files/Datasheets/A4952-3-Datasheet.pdf">Allegro A4953</a>. Este driver tiene un pin LSS en el que se puede conectar una resistencia $R_S$ para medir la corriente del motor, que se obtiene simplemente dividiendo la tensión (V_S) en la resistencia por el valor de la misma:</p>
 <p>$$
 I_{motor} = \frac{V_S}{R_S}
 $$</p>
 <p>Para diseñar el circuito decidí dibujar el esquema en <a href="http://www.kicad-pcb.org/">KiCad</a> y simularlo con <a href="http://ngspice.sourceforge.net/">ngspice</a>.</p>
-<p><img alt="Esquema" src="../../images/a4953_current_sensing.png" width="r830%"></p>
+<p><img alt="Esquema" src="../../images/a4953_current_sensing.png" width="80%"></p>
 <p>La simulación muestra la gráfica siguiente para los parámetros $V_S$, $V_M$ y $V_{OUT}$ cuando $V_S$ se hace variar entre $-0.44V$ y $+0.44V$.</p>
 <p><img alt="Plot" src="../../images/output.jpg" width="50%"></p>
 <p>La simulación devuelve los siguientes valores de tensión para los principales puntos de funcionamiento:</p>
