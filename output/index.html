@@ -12,7 +12,7 @@
 <meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" hreflang="es" href="rss.xml">
 <link rel="canonical" href="https://davidvg.github.io/">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/simulacion-circuito-lectura-tension/" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/test/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
@@ -68,7 +68,20 @@
 
     
 <div class="postindex">
-    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/simulacion-circuito-lectura-tension/" class="u-url">Simulación de circuito de lectura de tensión</a></h1>
+    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/test/" class="u-url">prueba</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                David Vázquez
+            </span></p>
+            <p class="dateline">
+            <a href="posts/test/" rel="bookmark">
+            <time class="published dt-published" datetime="2019-06-11T13:10:00+02:00" itemprop="datePublished" title="2019-06-11">2019-06-11</time></a>
+            </p>
+        </div>
+    </header><div class="p-summary entry-summary">
+    <p>Escriba su publicación aquí.</p>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/simulacion-circuito-lectura-tension/" class="u-url">Simulación de circuito de lectura de tensión</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 David Vázquez
@@ -84,7 +97,7 @@
 <p>$$
 I_{motor} = \frac{V_S}{R_S}
 $$</p>
-<p>Para diseñar el circuito decidí dibujar el esquema en <a href="http://www.kicad-pcb.org/">KiCad</a> y simularlo con <a href="http://ngspice.sourceforge.net/">ngspice</a>.</p>
+<p>Para diseñar el circuito decidí dibujar el esquema en <a href="http://www.kicad-pcb.org/">KiCad</a> y simularlo con <a href="http://ngspice.sourceforge.net/">ngspice</a>. La tensión $V_S$ se simula usando una fuente DC cuyo valor se hace variar entre los valores máximo y mínimo.</p>
 <p><img alt="Esquema" src="images/a4953_current_sensing.png" width="80%"></p>
 <p>La simulación muestra la gráfica siguiente para los parámetros $V_S$, $V_M$ y $V_{OUT}$ cuando $V_S$ se hace variar entre $-0.44V$ y $+0.44V$.</p>
 <p><img alt="Plot" src="images/output.jpg" width="50%"></p>

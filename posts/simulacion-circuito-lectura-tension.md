@@ -2,7 +2,7 @@
 .. title: Simulación de circuito de lectura de tensión
 .. slug: simulacion-circuito-lectura-tension
 .. date: 2019-06-10 19:30:00 UTC+02:00
-.. tags: electronica,spice,kicad,robotica,driver,mathjax
+.. tags: electronica,spice,kicad,robotica,driver
 .. status: 
 .. category: robotica
 .. link: 
@@ -17,7 +17,7 @@ $$
 I_{motor} = \frac{V_S}{R_S}
 $$
 
-Para diseñar el circuito decidí dibujar el esquema en [KiCad](http://www.kicad-pcb.org/) y simularlo con [ngspice](http://ngspice.sourceforge.net/).
+Para diseñar el circuito decidí dibujar el esquema en [KiCad](http://www.kicad-pcb.org/) y simularlo con [ngspice](http://ngspice.sourceforge.net/). La tensión $V_S$ se simula usando una fuente DC cuyo valor se hace variar entre los valores máximo y mínimo.
 
 <img alt="Esquema" src="/images/a4953_current_sensing.png" width="80%">
 
