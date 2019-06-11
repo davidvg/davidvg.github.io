@@ -18,11 +18,11 @@ $$
 
 Para diseñar el circuito decidí dibujar el esquema en [KiCad](http://www.kicad-pcb.org/) y simularlo con [ngspice](http://ngspice.sourceforge.net/).
 
-<img alt="Esquema" src="/images/a4953_current_sensing.png" width="30%">
+<img alt="Esquema" src="/images/a4953_current_sensing.png" width="r830%">
 
 La simulación muestra la gráfica siguiente para los parámetros $V_S$, $V_M$ y $V_{OUT}$ cuando $V_S$ se hace variar entre $-0.44V$ y $+0.44V$.
 
-<img alt="Plot" src="/images/output.jpg" width="60%">
+<img alt="Plot" src="/images/output.jpg" width="50%">
 
 La simulación devuelve los siguientes valores de tensión para los principales puntos de funcionamiento:
 
