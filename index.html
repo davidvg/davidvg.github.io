@@ -12,7 +12,7 @@
 <meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" hreflang="es" href="rss.xml">
 <link rel="canonical" href="https://davidvg.github.io/">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/test/" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/simulacion-de-circuto-para-lectura-de-tension/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
@@ -68,121 +68,152 @@
 
     
 <div class="postindex">
-    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/test/" class="u-url">prueba</a></h1>
+    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/simulacion-de-circuto-para-lectura-de-tension/" class="u-url">Simulación de circuto para lectura de tensión</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 David Vázquez
             </span></p>
             <p class="dateline">
-            <a href="posts/test/" rel="bookmark">
-            <time class="published dt-published" datetime="2019-06-11T13:10:00+02:00" itemprop="datePublished" title="2019-06-11">2019-06-11</time></a>
-            </p>
-        </div>
-    </header><div class="p-summary entry-summary">
-    <p>Escriba su publicación aquí.</p>
-    </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/simulacion-circuito-lectura-tension/" class="u-url">Simulación de circuito de lectura de tensión</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                David Vázquez
-            </span></p>
-            <p class="dateline">
-            <a href="posts/simulacion-circuito-lectura-tension/" rel="bookmark">
-            <time class="published dt-published" datetime="2019-06-10T19:30:00+02:00" itemprop="datePublished" title="2019-06-10">2019-06-10</time></a>
+            <a href="posts/simulacion-de-circuto-para-lectura-de-tension/" rel="bookmark">
+            <time class="published dt-published" datetime="2019-06-11T13:29:55+02:00" itemprop="datePublished" title="2019-06-11">2019-06-11</time></a>
             </p>
         </div>
     </header><div class="p-summary entry-summary">
     <div>
-<p>Para un proyecto de robótica que estoy comenzando, basado en versiones de los rover marcianos de NASA, necesitaba diseñar un circuito para hacer la lectura de la corriente que circula por un motor controlado mediante un driver <a href="https://www.allegromicro.com/~/media/Files/Datasheets/A4952-3-Datasheet.pdf">Allegro A4953</a>. Este driver tiene un pin LSS en el que se puede conectar una resistencia $R_S$ para medir la corriente del motor, que se obtiene simplemente dividiendo la tensión (V_S) en la resistencia por el valor de la misma:</p>
-<p>$$
+<p>Para un proyecto de robótica que estoy comenzando, basado en versiones de los rover marcianos de NASA, necesitaba diseñar un circuito para hacer la lectura de la corriente que circula por un motor controlado mediante un driver <a class="reference external" href="https://www.allegromicro.com/~/media/Files/Datasheets/A4952-3-Datasheet.pdf">Allegro A4953</a>. Este driver tiene un pin LSS en el que se puede conectar una resistencia <span class="math">\(R_S\)</span> para medir la corriente del motor, que se obtiene simplemente dividiendo la tensión <span class="math">\(V_S\)</span> en la resistencia por el valor de la misma:</p>
+<div class="math">
+\begin{equation*}
 I_{motor} = \frac{V_S}{R_S}
-$$</p>
-<p>Para diseñar el circuito decidí dibujar el esquema en <a href="http://www.kicad-pcb.org/">KiCad</a> y simularlo con <a href="http://ngspice.sourceforge.net/">ngspice</a>. La tensión $V_S$ se simula usando una fuente DC cuyo valor se hace variar entre los valores máximo y mínimo.</p>
-<p><img alt="Esquema" src="images/a4953_current_sensing.png" width="80%"></p>
-<p>La simulación muestra la gráfica siguiente para los parámetros $V_S$, $V_M$ y $V_{OUT}$ cuando $V_S$ se hace variar entre $-0.44V$ y $+0.44V$.</p>
-<p><img alt="Plot" src="images/output.jpg" width="50%"></p>
-<p>La simulación devuelve los siguientes valores de tensión para los principales puntos de funcionamiento:</p>
-<table>
-<thead><tr>
-<th align="right">$V_S$</th>
-<th>$V_M$</th>
-<th>$V_{OUT}$</th>
+\end{equation*}
+</div>
+<p>Las conexiones del chip se muestran en la hoja de datos:</p>
+<img alt="Conexiones del A4953" class="align-center" src="images/a4953_conexiones.png" style="width: 300px;"><p>El esquema del circuito se hizo en <a class="reference external" href="http://www.kicad-pcb.org/">KiCad</a> y se simuló con <a class="reference external" href="http://ngspice.sourceforge.net/">ngspice</a>. La tensión en la resistencia <span class="math">\(R_S\)</span>, <span class="math">\(V_S\)</span>, se simula usando una fuente de tensión (<span class="math">\(V_1\)</span> en el esquema) cuyo valor se hace variar entre los valores máximo y mínimo.</p>
+<img alt="Esquema" class="align-center" src="images/a4953_current_sensing.png" style="width: 70%;"><div class="section" id="calculos">
+<h2>Cálculos</h2>
+<div class="section" id="resistencia-r-s">
+<h3>Resistencia <span class="math">\(R_S\)</span>
+</h3>
+<p>En la hoja de datos del driver se especifica que el valor de la tensión en la <span class="math">\(R_S\)</span> debe ser menor, en valor absoluto, que <span class="math">\(0.5V\)</span>. Para calcular esta resistencia, se da una expresión en función de <span class="math">\(I_{max}\)</span>, la corriente máxima que puede circular por el motor, <span class="math">\(A\)</span>, una ganancia interna que se define con el valor <span class="math">\(10\)</span>, y <span class="math">\(V_{ref}\)</span>, la tensión que se aplique en el pin VREF:</p>
+<div class="math">
+\begin{equation*}
+I_{max} = \frac{V_{ref}}{A R_S}
+\end{equation*}
+</div>
+<p>Para una corriente máxima de <span class="math">\(1.1A\)</span> y <span class="math">\(V_{ref} = 5V\)</span>:</p>
+<div class="math">
+\begin{equation*}
+R_S = \frac{V_{ref}}{A  I_{max}} = \frac{5V}{10 \times 1.1A} = 0.45 \Omega
+\end{equation*}
+</div>
+<p>Eligiendo  <span class="math">\(R_S = 0.4 \Omega\)</span>, la tensión máxima que se tendrá en LSS es, en valor absoluto, <span class="math">\(V_S = 0.4 \Omega \times 1.1A = 0.44V &lt; 0.5V\)</span>, por lo que la tensión en LSS estará comprendida entre <span class="math">\(-0.44V\)</span> y <span class="math">\(+0.44V\)</span>.</p>
+</div>
+<div class="section" id="adaptacion-de-tensiones">
+<h3>Adaptación de tensiones</h3>
+<p>Este rango de tensiones será leído mediante el <a class="reference external" href="https://es.wikipedia.org/wiki/Conversor_de_se%C3%B1al_anal%C3%B3gica_a_digital">conversor analógico/digital (ADC)</a> de un <a class="reference external" href="https://store.arduino.cc/arduino-nano">Arduino Nano</a>, que registra tensiones entre <span class="math">\(0\)</span> y <span class="math">\(5V\)</span> con una resolución de 10 bit (1024 cuentas), por lo que es necesario adaptar estas tensiones a valores adecuados para tener una resolución decente en la lectura. Idealmente, se intentaría usar todo el rango <span class="math">\((0V, 5V)\)</span> del ADC, pero conviene dejar márgenes de seguridad para asegurar que no se alcanzan los máximos y para evitar que el amplificador operacional que hará la adaptación trabaje en los extremos (<span class="math">\(0V\)</span> y <span class="math">\(VCC\)</span>), lo que puede producir valores erróneos.</p>
+<p>La adaptación de tensiones se realiza usando un <a class="reference external" href="http://www.ti.com/lit/ds/symlink/lm358.pdf">amplificador operacional LM358</a> configurado como <a class="reference external" href="https://es.wikipedia.org/wiki/Amplificador_operacional#Amplificador_no_inversor">amplificador no inversor</a>. En esta configuración, la ganancia es positiva, por lo que el primer obstáculo está en transformar el rango de tensiones en LSS para que todas sean positivas. Para ello se coloca en serie con la tensión <span class="math">\(V_S\)</span> un diodo alimentado desde el pin de <span class="math">\(3.3V\)</span> del Arduino que sumará su tensión de codo, unos <span class="math">\(0.66V\)</span> de promedio, al valor de <span class="math">\(V_S\)</span>, por lo que se pasa a tener un rango de tensiones <span class="math">\((Vd-Vs, Vd+Vs) = (0.23V, 1.09V)\)</span>, todas positivas. Estas tensiones, <span class="math">\(V_M\)</span> en el esquema y en la gráfica, se pasan como entrada a la etapa amplificadora para adaptarlas al rango <span class="math">\((0V, 5V)\)</span> del ADC.</p>
+</div>
+<div class="section" id="amplificador-operacional">
+<h3>Amplificador operacional</h3>
+<p>La ganancia del amplificador no inversor viene dada, en este circuito, por</p>
+<div class="math">
+\begin{equation*}
+A_v = 1 + \frac{R_4}{R_2+R_3}
+\end{equation*}
+</div>
+<p>y la tensión en la salida será</p>
+<div class="math">
+\begin{equation*}
+V_{OUT} = A_v   V_M
+\end{equation*}
+</div>
+<p>Según las especificaciones del LM358, en la salida de este operacional se pueden obtener tensiones entre <span class="math">\(0V\)</span> y <span class="math">\(VCC-1.5V\)</span>, por lo que si fijamos un valor máximo aproximado de tensión en el ADC de <span class="math">\(4.5V\)</span> se tiene que VCC debe ser igual a <span class="math">\(6V\)</span>, que es una de las tensiones que se va a usar en la placa definitiva. Ese valor máximo también da un margen de seguridad en la tensión medida en el ADC.</p>
+<p>Para obtener <span class="math">\(4.5V\)</span> en la salida cuando se tienen <span class="math">\(1.09V\)</span> enla entrada necesitamos una ganancia de tensión igual a</p>
+<div class="math">
+\begin{equation*}
+\frac{4.5V}{1.09V} = 4.13 = 1 + \frac{R_4}{R_2+R_3}
+\end{equation*}
+</div>
+<p>por lo que la relación <span class="math">\(\frac{R_4}{R_2+R_3}\)</span> tiene que ser menor o igual a <span class="math">\(3.13\)</span> para no sobrepasar los <span class="math">\(4.5V\)</span>.  Seleccionando <span class="math">\(R_2+R_3 = 110 \: k \Omega\)</span> y <span class="math">\(R_4 = 330 \:k \Omega\)</span> se obtiene una relación de <span class="math">\(3\)</span> y una ganancia <span class="math">\(A_v = 4\)</span>.</p>
+<p>Con esta ganancia el rango de tensiones en la salida del amplificador será</p>
+<div class="math">
+\begin{equation*}
+V_{OUT} = (A_v \times 0.23, \: Av \times 1.09) = (0.90V, \: 4.35V)
+\end{equation*}
+</div>
+<p>que se corresponden con valores medidos en el ADC de <span class="math">\((184, 890)\)</span>, utilizando un <span class="math">\(69 \%\)</span> del rango del ADC.</p>
+</div>
+<div class="section" id="simulacion">
+<h3>Simulación</h3>
+<p>La gráfica siguiente muestra el resultado de la simulación para los parámetros <span class="math">\(V_S\)</span>, <span class="math">\(V_M\)</span> y <span class="math">\(V_{OUT}\)</span> cuando <span class="math">\(V_S\)</span> se hace variar entre <span class="math">\(-0.44V\)</span> y <span class="math">\(+0.44V\)</span>.</p>
+<img alt="Plot" class="align-center" src="images/output.jpg" style="width: 50%;"><p>La simulación devuelve los siguientes valores de las tensiones <span class="math">\(V_M\)</span>, tras sumar la tensión de codo del diodo, y <span class="math">\(V_{OUT}\)</span>, a la salida del amplificador, para los casos en que <span class="math">\(V_S\)</span> toma los valores mínimo, <span class="math">\(0\)</span> y máximo:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%">
+<col width="30%">
+<col width="37%">
+</colgroup>
+<thead valign="bottom"><tr>
+<th class="head"><span class="math">\(V_S\)</span></th>
+<th class="head"><span class="math">\(V_M\)</span></th>
+<th class="head"><span class="math">\(V_{OUT}\)</span></th>
 </tr></thead>
-<tbody>
+<tbody valign="top">
 <tr>
-<td align="right">$-0.44$</td>
-<td>$0.23$</td>
-<td>$0.90$</td>
+<td><span class="math">\(-0.44\)</span></td>
+<td><span class="math">\(0.23\)</span></td>
+<td><span class="math">\(0.90\)</span></td>
 </tr>
 <tr>
-<td align="right">$0.00$</td>
-<td>$0.66$</td>
-<td>$2.63$</td>
+<td><span class="math">\(0.00\)</span></td>
+<td><span class="math">\(0.66\)</span></td>
+<td><span class="math">\(2.63\)</span></td>
 </tr>
 <tr>
-<td align="right">$+0.44$</td>
-<td>$1.09$</td>
-<td>$4.35$</td>
+<td><span class="math">\(+0.44\)</span></td>
+<td><span class="math">\(1.09\)</span></td>
+<td><span class="math">\(4.35\)</span></td>
 </tr>
 </tbody>
 </table>
-<h4>Procedimiento del cálculo</h4>
-<p>La hoja de datos da una expresión para calcular $R_S$:</p>
-<p>$$
-I_{max} = \frac{V_{ref}}{A_v R_S}
-$$</p>
-<p>siendo $I_{max}$ la corriente máxima del motor, $V_{ref}$ la tensión aplicada en el pin VREF (se usarán 5V) y $A_v$ una ganancia que en la hoja de datos se define con valor 10. Con esto, se puede calcular el valor de $R_S$ adecuado para este caso:</p>
-<p>$$
-R_S = \frac{V_{ref}}{A_v  I_{max}} = \frac{5V}{10 \times 1.1A} = 0.45 \Omega
-$$</p>
-<p>Según las especificaciones del driver, el valor máximo admisible en LSS, en valor absoluto, es de $0.5 V$. Eligiendo $R_S= 0.4 \Omega$, la tensión máxima que se tendrá en LSS es, en valor absoluto:</p>
-<p>$$
-V_S = 0.4 \Omega \times 1.1A = 0.44V &lt; 0.5V
-$$</p>
-<p>Como resultado, en LSS se tendrán tensiones en el rango $(-0.44V, +0.44V)$ (línea azul en la gráfica) en función de la corriente que circula por el motor.</p>
-<p>Este rango de tensiones será leído mediante el <a href="https://es.wikipedia.org/wiki/Conversor_de_se%C3%B1al_anal%C3%B3gica_a_digital">conversor analógico/digital (ADC)</a> de un <a href="https://store.arduino.cc/arduino-nano">Arduino Nano</a>, que registra tensiones entre $0$ y $5V$ con una resolución de 10 bit (1024 cuentas), por lo que es necesario adaptar estas tensiones a valores adecuados para tener una resolución decente en la lectura. Idealmente, se intentaría usar todo el rango $(0V, 5V)$ del ADC, pero conviene dejar márgenes de seguridad para asegurar que no se alcanzan los máximos y para evitar que el amplificador operacional que hará la adaptación trabaje en los extremos ($0V$ y $VCC$), lo que puede producir valores erróneos.</p>
-<p>La adaptación de tensiones se realiza usando un <a href="http://www.ti.com/lit/ds/symlink/lm358.pdf">amplificador operacional LM358</a> configurado como <a href="https://es.wikipedia.org/wiki/Amplificador_operacional#Amplificador_no_inversor">amplificador no inversor</a>. En esta configuración, la ganancia es positiva, por lo que el primer obstáculo está en transformar el rango de tensiones en LSS para que todas sean positivas. Para ello se coloca en serie con la tensión $V_S$ un diodo alimentado desde el pin de $3.3V$ del Arduino que sumará su tensión de codo, unos $0.66V$ de promedio, al valor de $V_S$, por lo que se pasa a tener un rango de tensiones $(Vd-Vs, Vd+Vs) = (0.23V, 1.09V)$, todas positivas. Estas tensiones, $V_M$ en el esquema y en la gráfica, se pasan como entrada a la etapa amplificadora para adaptarlas al rango $(0V, 5V)$ del ADC.</p>
-<p>La ganancia del amplificador no inversor viene dada por</p>
-<p>$$
-A_v = 1 + \frac{R_4}{R_2+R_3}
-$$</p>
-<p>y la tensión en la salida será</p>
-<p>$$
-V_{OUT} = A_v   V_M
-$$</p>
-<p>Según las especificaciones del LM358, en la salida de este operacional se pueden obtener tensiones entre $0V$ y $VCC-1.5V$, por lo que si fijamos un valor máximo aproximado de tensión en el ADC de 4.5V se tiene que VCC debe ser igual a 6V, que es una de las tensiones que se va a usar en la placa definitiva. Ese valor máximo también da un margen de seguridad en la tensión medida en el ADC.</p>
-<p>Para obtener 4.5V en la salida necesitamos una ganancia de tensión igual a</p>
-<p>$$\frac{4.5V}{1.09V} = 4.13 = 1 + \frac{R_4}{R_2+R_3}$$</p>
-<p>por lo que la relación $\frac{R_4}{R_2+R_3}$ tiene que ser menor o igual a $3.13$ para no sobrepasar los $4.5V$.  Seleccionando $R_2+R_3 = 110 \: k \Omega$ y $R_4 = 330 \:k \Omega$ se obtiene una relación de $3$ y una ganancia $A_v = 4$.</p>
-<p>Con esta ganancia el rango de tensiones en la salida del amplificador será</p>
-<p>$$
-V_{OUT} = (A_v \times 0.23, \: Av \times 1.09) = (0.90V, \: 4.35V)
-$$</p>
-<p>que se corresponden con valores del ADC de $(184, 890)$, utilizando un $69 \%$ del rango del ADC.</p>
-<h4>Resolución en corriente del ADC</h4>
+<p>Se puede ver cómo <span class="math">\(V_M\)</span> toma valores siempre positivos, por lo que no hay problemas en el amplificador. También se ve que la tensión a la salida está en el rango del conversor ACD.</p>
+</div>
+</div>
+<div class="section" id="resolucion-en-corriente">
+<h2>Resolución en corriente</h2>
 <p>Se puede calcular la resolución de la medida de corriente por el motor, es decir cuánto cambia la corriente por cada cuenta del ADC.</p>
 <p>La tensión de salida del amplificador es:</p>
-<p>$$
+<div class="math">
+\begin{equation*}
 V_{OUT} = A_v(R_S i_S + V_d)
-$$</p>
-<p>siendo $i_S$ la corriente que circula por $R_S$ (se desprecia la corrientes que circula por el diodo, del orden de $1 mA$) y $V_d$ la tensión de codo en el diodo.</p>
+\end{equation*}
+</div>
+<p>siendo <span class="math">\(i_S\)</span> la corriente que circula por <span class="math">\(R_S\)</span> (se desprecia la corrientes que circula por el diodo, del orden de <span class="math">\(1 mA\)</span>) y <span class="math">\(V_d\)</span> la tensión de codo en el diodo.</p>
 <p>Expresado como cuentas del ADC:</p>
-<p>$$
+<div class="math">
+\begin{equation*}
 N = \frac{1024}{5}  V_{OUT}
-$$</p>
-<p>Si tomamos dos medidas consecutivas del ADC, $N1$ y $N2 = N1 + 1$:</p>
-<p>$$
-N2 - N1 = \frac{1024}{5} Av (R_S i_2 + V_d) - \frac{1024}{5} Av (R_S * i_1 + V_d)
-$$</p>
+\end{equation*}
+</div>
+<p>Si tomamos dos medidas consecutivas del ADC, <span class="math">\(N1\)</span> y <span class="math">\(N2 = N1 + 1\)</span>:</p>
+<div class="math">
+\begin{equation*}
+N2 - N1 = \frac{1024}{5} Av (R_S i_2 + V_d) - \frac{1024}{5} Av (R_S i_1 + V_d)
+\end{equation*}
+</div>
 <p>Operando:</p>
-<p>$$
-1 = \frac{1024}{5} Av R_S (i_2 - i_1)</p>
-<p>$$</p>
-<p>Y se tiene:</p>
-<p>$$
-(i2 - i1) = \Delta i = \frac{5}{1024 \: A_v R_S} = 3.05 \dfrac{mA}{cuenta}
-$$</p>
-<p>Es decir, se tiene una resolución en la medida de corriente que circula por el motor de unos $3 \: mA$.</p>
+<div class="math">
+\begin{equation*}
+1 = \frac{1024}{5} Av R_S (i_2 - i_1)
+\end{equation*}
+</div>
+<p>y se tiene:</p>
+<div class="math">
+\begin{equation*}
+i2 - i1 = \Delta i = \frac{5}{1024 \: A_v R_S} = 3.05 \dfrac{mA}{cuenta}
+\end{equation*}
+</div>
+<p>Es decir, se tiene una resolución en la medida de corriente que circula por el motor de unos <span class="math">\(3 \: mA\)</span>.</p>
+</div>
 </div>
     </div>
     </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/turtlebot3-y-ros-melodic-en-ubuntu-1804/" class="u-url">Turtlebot3 y ROS Melodic en Ubuntu 18.04</a></h1>
