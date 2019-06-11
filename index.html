@@ -85,9 +85,9 @@
 I_{motor} = \frac{V_S}{R_S}
 $$</p>
 <p>Para diseñar el circuito decidí dibujar el esquema en <a href="http://www.kicad-pcb.org/">KiCad</a> y simularlo con <a href="http://ngspice.sourceforge.net/">ngspice</a>.</p>
-<p><img alt="Esquema" src="images/a4953_current_sensing.png"></p>
+<p><img alt="Esquema" src="images/a4953_current_sensing.png" width="30%"></p>
 <p>La simulación muestra la gráfica siguiente para los parámetros $V_S$, $V_M$ y $V_{OUT}$ cuando $V_S$ se hace variar entre $-0.44V$ y $+0.44V$.</p>
-<p><img alt="Plot" src="images/output.jpg"><img alt="Plot" src="images/output.jpg" width="40%"></p>
+<p><img alt="Plot" src="images/output.jpg" width="60%"></p>
 <p>La simulación devuelve los siguientes valores de tensión para los principales puntos de funcionamiento:</p>
 <table>
 <thead><tr>
@@ -394,9 +394,11 @@ export QT_SCREEN_SCALE_FACTORS=
 
 
 
-
-
-        </div>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha256-SDRP1VVYu+tgAGKhddBSl5+ezofHKZeI+OzxakbIe/Y=" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+        </script>
+</div>
         <!--End of body content-->
 
         <footer id="footer">

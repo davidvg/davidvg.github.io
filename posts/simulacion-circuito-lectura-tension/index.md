@@ -2,7 +2,7 @@
 .. title: Simulación de circuito de lectura de tensión
 .. slug: simulacion-circuito-lectura-tension
 .. date: 2019-06-10 19:30:00 UTC+02:00
-.. tags: electronica,spice,kicad,robotica,driver
+.. tags: electronica,spice,kicad,robotica,driver,mathjax
 .. status: 
 .. category: robotica
 .. link: 
@@ -18,12 +18,11 @@ $$
 
 Para diseñar el circuito decidí dibujar el esquema en [KiCad](http://www.kicad-pcb.org/) y simularlo con [ngspice](http://ngspice.sourceforge.net/).
 
-![Esquema](/images/a4953_current_sensing.png)
+<img alt="Esquema" src="/images/a4953_current_sensing.png" width="30%">
 
 La simulación muestra la gráfica siguiente para los parámetros $V_S$, $V_M$ y $V_{OUT}$ cuando $V_S$ se hace variar entre $-0.44V$ y $+0.44V$.
 
-![Plot](/images/output.jpg)
-<img alt="Plot" src="/images/output.jpg" width="40%">
+<img alt="Plot" src="/images/output.jpg" width="60%">
 
 La simulación devuelve los siguientes valores de tensión para los principales puntos de funcionamiento:
 
