@@ -13,6 +13,7 @@
 <link rel="canonical" href="https://davidvg.github.io/posts/simulacion-circuito-lectura-tension/">
 <!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="David Vázquez">
 <link rel="prev" href="../turtlebot3-y-ros-melodic-en-ubuntu-1804/" title="Turtlebot3 y ROS Melodic en Ubuntu 18.04" type="text/html">
+<link rel="next" href="../test/" title="prueba" type="text/html">
 <meta property="og:site_name" content="Muerte por Checklist">
 <meta property="og:title" content="Simulación de circuito de lectura de tensión">
 <meta property="og:url" content="https://davidvg.github.io/posts/simulacion-circuito-lectura-tension/">
@@ -22,7 +23,6 @@
 <meta property="article:tag" content="driver">
 <meta property="article:tag" content="electronica">
 <meta property="article:tag" content="kicad">
-<meta property="article:tag" content="mathjax">
 <meta property="article:tag" content="robotica">
 <meta property="article:tag" content="spice">
 </head>
@@ -102,7 +102,7 @@
 <p>$$
 I_{motor} = \frac{V_S}{R_S}
 $$</p>
-<p>Para diseñar el circuito decidí dibujar el esquema en <a href="http://www.kicad-pcb.org/">KiCad</a> y simularlo con <a href="http://ngspice.sourceforge.net/">ngspice</a>.</p>
+<p>Para diseñar el circuito decidí dibujar el esquema en <a href="http://www.kicad-pcb.org/">KiCad</a> y simularlo con <a href="http://ngspice.sourceforge.net/">ngspice</a>. La tensión $V_S$ se simula usando una fuente DC cuyo valor se hace variar entre los valores máximo y mínimo.</p>
 <p><img alt="Esquema" src="../../images/a4953_current_sensing.png" width="80%"></p>
 <p>La simulación muestra la gráfica siguiente para los parámetros $V_S$, $V_M$ y $V_{OUT}$ cuando $V_S$ se hace variar entre $-0.44V$ y $+0.44V$.</p>
 <p><img alt="Plot" src="../../images/output.jpg" width="50%"></p>
@@ -200,6 +200,9 @@ $$</p>
 <ul class="pager hidden-print">
 <li class="previous">
                 <a href="../turtlebot3-y-ros-melodic-en-ubuntu-1804/" rel="prev" title="Turtlebot3 y ROS Melodic en Ubuntu 18.04">Publicación anterior</a>
+            </li>
+            <li class="next">
+                <a href="../test/" rel="next" title="prueba">Siguiente publicación</a>
             </li>
         </ul></nav></aside><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha256-SDRP1VVYu+tgAGKhddBSl5+ezofHKZeI+OzxakbIe/Y=" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
         MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});

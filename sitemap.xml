@@ -23,7 +23,7 @@
  </url>
  <url>
   <loc>https://davidvg.github.io/archive.html</loc>
-  <lastmod>2019-06-10T17:44:00Z</lastmod>
+  <lastmod>2019-06-11T11:11:00Z</lastmod>
  </url>
  <url>
   <loc>https://davidvg.github.io/categories/</loc>
@@ -132,6 +132,10 @@
  <url>
   <loc>https://davidvg.github.io/posts/simulacion-circuito-lectura-tension/</loc>
   <lastmod>2019-06-10T17:44:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://davidvg.github.io/posts/test/</loc>
+  <lastmod>2019-06-11T11:11:00Z</lastmod>
  </url>
  <url>
   <loc>https://davidvg.github.io/posts/turtlebot3-y-ros-melodic-en-ubuntu-1804/</loc>
