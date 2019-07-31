@@ -12,7 +12,7 @@
 <meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" hreflang="es" href="rss.xml">
 <link rel="canonical" href="https://davidvg.github.io/">
-<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/simulacion-de-circuto-para-lectura-de-tension/" type="text/html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/m27-nebulosa-de-dumbbell/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
@@ -68,7 +68,58 @@
 
     
 <div class="postindex">
-    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/simulacion-de-circuto-para-lectura-de-tension/" class="u-url">Simulación de circuto para lectura de tensión</a></h1>
+    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/m27-nebulosa-de-dumbbell/" class="u-url">M27 - Nebulosa de Dumbbell</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                David Vázquez
+            </span></p>
+            <p class="dateline">
+            <a href="posts/m27-nebulosa-de-dumbbell/" rel="bookmark">
+            <time class="published dt-published" datetime="2019-07-31T20:45:44+02:00" itemprop="datePublished" title="2019-07-31">2019-07-31</time></a>
+            </p>
+        </div>
+    </header><div class="p-summary entry-summary">
+    <div>
+<p>El pasado fín de semana, aprovechando que daban buena noche, me escapé a León para probar la nueva cámara CCD, una <a class="reference external" href="https://www.atik-cameras.com/product/atik-383l-plus/">Atik 383L+</a>, de 8.3 Mpx y que con el C8 y la reductora de focal x0.63 me da un campo aproximado de <span class="math">\(48' \times 36'\)</span> (<a class="reference external" href="https://es.wikipedia.org/wiki/Minuto_de_arco">minutos de arco</a>), bastante grande para una CCD comparado con los <span class="math">\(62' \times 42'\)</span> que obtenía con la Canon 50D.</p>
+<p>Decidí probar con <a class="reference external" href="https://duckduckgo.com/?q=nebulosa+dumbbell&amp;ia=images&amp;iax=images&amp;atb=v136-1">M27</a>, la <a class="reference external" href="https://es.wikipedia.org/wiki/Nebulosa_planetaria">nebulosa planetaria</a> Dumbbell, una "pelota" grande y luminosa que suele salir bien en las fotos.</p>
+<p>La cámara es monocromo, para poder usar en el futuro <a class="reference external" href="https://duckduckgo.com/?q=astrophotography+narrow+band&amp;atb=v136-1&amp;iar=images&amp;iax=images&amp;ia=images">filtros de banda estrecha</a> para capturar emisiones de <span class="math">\(\text{H}_{\alpha}\)</span> (hidrógeno) o el <span class="math">\(\text{OIII}\)</span> (oxígeno)</p>
+<div class="line-block">
+<div class="line"><br></div>
+</div>
+<img alt="M27, nebulosa de Dumbbell." class="align-center" src="images/m27_190728.jpg" style="width: 800px;"><div class="section" id="equipo">
+<h2>Equipo</h2>
+<ul class="simple">
+<li>Telescopio: Celestron C8 + reductora de focal x0.63.</li>
+<li>Montura SkyWatcher EQ6.</li>
+<li>Guiado: QHY5-IIM en tubo Lunático (60mm diámetro, 230mm focal)</li>
+<li>Cámara: Atik 383L+, refrigerada a <span class="math">\(-20 ^\circ C\)</span>.</li>
+<li>
+<a class="reference external" href="https://sciencecenter.net/hutech/idas/lps.htm">Filtro de contaminación lumínica IDAS</a>.</li>
+<li>RaspberryPi con <a class="reference external" href="https://www.indilib.org/">INDI</a> para control de todo el equipo.</li>
+</ul>
+</div>
+<div class="section" id="datos-de-la-imagen">
+<h2>Datos de la imagen</h2>
+<ul class="simple">
+<li>12 tomas de 10 minutos de exposición (total acumulado: 2h)</li>
+<li>Bias: <span class="math">\(30 \times 0.001 \; \text{s}\)</span>
+</li>
+<li>Dark: <span class="math">\(10 \times 10 \; \text{min}\)</span>
+</li>
+<li>Flat: <span class="math">\(30 \times 1 \; \text{s}\)</span>, colocando un difusor en el tubo y disparando un flash.</li>
+</ul>
+</div>
+<div class="section" id="software">
+<h2>Software</h2>
+<ul class="simple">
+<li>Control del telescopio, guiado y captura de imágenes: <a class="reference external" href="https://edu.kde.org/kstars/">KStars</a>.</li>
+<li>Preprocesado, alineado, apilado y procesado básico de imágenes: <a class="reference external" href="https://www.siril.org/">Siril</a>.</li>
+<li>Post procesado en <a class="reference external" href="https://www.gimp.org/">GIMP</a>.</li>
+</ul>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/simulacion-de-circuto-para-lectura-de-tension/" class="u-url">Simulación de circuto para lectura de tensión</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 David Vázquez
