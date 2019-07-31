@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Muerte por Checklist (Publicaciones sobre messier)</title><link>https://davidvg.github.io/</link><description></description><atom:link href="https://davidvg.github.io/categories/messier.xml" rel="self" type="application/rss+xml"></atom:link><language>es</language><lastBuildDate>Wed, 31 Jul 2019 20:40:59 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>M27 - Nebulosa de Dumbbell</title><link>https://davidvg.github.io/posts/m27-nebulosa-de-dumbbell/</link><dc:creator>David Vázquez</dc:creator><description>&lt;div&gt;&lt;p&gt;El pasado fín de semana, aprovechando que daban buena noche, me escapé a León para probar la nueva cámara CCD, una &lt;a class="reference external" href="https://www.atik-cameras.com/product/atik-383l-plus/"&gt;Atik 383L+&lt;/a&gt;, de 8.3 Mpx y que con el C8 y la reductora de focal x0.63 me da un campo aproximado de &lt;span class="math"&gt;\(48' \times 36'\)&lt;/span&gt; (&lt;a class="reference external" href="https://es.wikipedia.org/wiki/Minuto_de_arco"&gt;minutos de arco&lt;/a&gt;), bastante grande para una CCD comparado con los &lt;span class="math"&gt;\(62' \times 42'\)&lt;/span&gt; que obtenía con la Canon 50D.&lt;/p&gt;
+&lt;p&gt;Decidí probar con &lt;a class="reference external" href="https://duckduckgo.com/?q=nebulosa+dumbbell&amp;amp;ia=images&amp;amp;iax=images&amp;amp;atb=v136-1"&gt;M27&lt;/a&gt;, la &lt;a class="reference external" href="https://es.wikipedia.org/wiki/Nebulosa_planetaria"&gt;nebulosa planetaria&lt;/a&gt; Dumbbell, una "pelota" grande y luminosa que suele salir bien en las fotos.&lt;/p&gt;
+&lt;p&gt;La cámara es monocromo, para poder usar en el futuro &lt;a class="reference external" href="https://duckduckgo.com/?q=astrophotography+narrow+band&amp;amp;atb=v136-1&amp;amp;iar=images&amp;amp;iax=images&amp;amp;ia=images"&gt;filtros de banda estrecha&lt;/a&gt; para capturar emisiones de &lt;span class="math"&gt;\(\text{H}_{\alpha}\)&lt;/span&gt; (hidrógeno) o el &lt;span class="math"&gt;\(\text{OIII}\)&lt;/span&gt; (oxígeno)&lt;/p&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;&lt;br&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;img alt="M27, nebulosa de Dumbbell." class="align-center" src="https://davidvg.github.io/images/m27_190728.jpg" style="width: 800px;"&gt;
+&lt;div class="section" id="equipo"&gt;
+&lt;h2&gt;Equipo&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Telescopio: Celestron C8 + reductora de focal x0.63.&lt;/li&gt;
+&lt;li&gt;Montura SkyWatcher EQ6.&lt;/li&gt;
+&lt;li&gt;Guiado: QHY5-IIM en tubo Lunático (60mm diámetro, 230mm focal)&lt;/li&gt;
+&lt;li&gt;Cámara: Atik 383L+, refrigerada a &lt;span class="math"&gt;\(-20 ^\circ C\)&lt;/span&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://sciencecenter.net/hutech/idas/lps.htm"&gt;Filtro de contaminación lumínica IDAS&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;RaspberryPi con &lt;a class="reference external" href="https://www.indilib.org/"&gt;INDI&lt;/a&gt; para control de todo el equipo.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="datos-de-la-imagen"&gt;
+&lt;h2&gt;Datos de la imagen&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;12 tomas de 10 minutos de exposición (total acumulado: 2h)&lt;/li&gt;
+&lt;li&gt;Bias: &lt;span class="math"&gt;\(30 \times 0.001 \; \text{s}\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Dark: &lt;span class="math"&gt;\(10 \times 10 \; \text{min}\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Flat: &lt;span class="math"&gt;\(30 \times 1 \; \text{s}\)&lt;/span&gt;, colocando un difusor en el tubo y disparando un flash.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="software"&gt;
+&lt;h2&gt;Software&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Control del telescopio, guiado y captura de imágenes: &lt;a class="reference external" href="https://edu.kde.org/kstars/"&gt;KStars&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Preprocesado, alineado, apilado y procesado básico de imágenes: &lt;a class="reference external" href="https://www.siril.org/"&gt;Siril&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Post procesado en &lt;a class="reference external" href="https://www.gimp.org/"&gt;GIMP&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>dumbbell</category><category>m27</category><category>messier</category><category>nebulosa</category><guid>https://davidvg.github.io/posts/m27-nebulosa-de-dumbbell/</guid><pubDate>Wed, 31 Jul 2019 18:45:44 GMT</pubDate></item></channel></rss>
