@@ -7,11 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
   <loc>https://davidvg.github.io/categories/astronomia.xml</loc>
-  <lastmod>2019-08-11T10:00:00Z</lastmod>
- </sitemap>
- <sitemap>
-  <loc>https://davidvg.github.io/categories/astropy.xml</loc>
-  <lastmod>2019-08-07T10:36:00Z</lastmod>
+  <lastmod>2019-08-11T19:30:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://davidvg.github.io/categories/beaglebone.xml</loc>
@@ -23,7 +19,7 @@
  </sitemap>
  <sitemap>
   <loc>https://davidvg.github.io/categories/cat_astrofotografia.xml</loc>
-  <lastmod>2019-08-11T10:00:00Z</lastmod>
+  <lastmod>2019-08-11T19:30:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://davidvg.github.io/categories/cat_astronomia.xml</loc>
@@ -46,12 +42,8 @@
   <lastmod>2019-06-11T16:38:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://davidvg.github.io/categories/coordenadas.xml</loc>
-  <lastmod>2019-08-07T10:36:00Z</lastmod>
- </sitemap>
- <sitemap>
   <loc>https://davidvg.github.io/categories/cumulo.xml</loc>
-  <lastmod>2019-08-11T10:00:00Z</lastmod>
+  <lastmod>2019-08-11T19:30:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://davidvg.github.io/categories/dumbbell.xml</loc>
@@ -63,11 +55,11 @@
  </sitemap>
  <sitemap>
   <loc>https://davidvg.github.io/categories/fotografia.xml</loc>
-  <lastmod>2019-08-11T10:00:00Z</lastmod>
+  <lastmod>2019-08-11T19:30:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://davidvg.github.io/categories/galaxia.xml</loc>
-  <lastmod>2019-08-11T10:00:00Z</lastmod>
+  <lastmod>2019-08-11T19:30:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://davidvg.github.io/categories/jupiter.xml</loc>
@@ -106,14 +98,6 @@
   <lastmod>2019-06-11T16:38:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://davidvg.github.io/categories/python.xml</loc>
-  <lastmod>2019-08-07T10:36:00Z</lastmod>
- </sitemap>
- <sitemap>
-  <loc>https://davidvg.github.io/categories/quinteto-de-stephan.xml</loc>
-  <lastmod>2019-08-11T09:57:00Z</lastmod>
- </sitemap>
- <sitemap>
   <loc>https://davidvg.github.io/categories/robotica.xml</loc>
   <lastmod>2019-06-11T16:38:00Z</lastmod>
  </sitemap>
@@ -142,15 +126,11 @@
   <lastmod>2019-08-07T10:36:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://davidvg.github.io/categories/wcs.xml</loc>
-  <lastmod>2019-08-07T10:36:00Z</lastmod>
- </sitemap>
- <sitemap>
   <loc>https://davidvg.github.io/rss.xml</loc>
-  <lastmod>2019-08-11T10:00:00Z</lastmod>
+  <lastmod>2019-08-11T19:30:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://davidvg.github.io/sitemap.xml</loc>
-  <lastmod>2019-08-11T10:00:00Z</lastmod>
+  <lastmod>2019-08-11T19:30:00Z</lastmod>
  </sitemap>
 </sitemapindex>
