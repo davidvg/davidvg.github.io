@@ -1,14 +1,16 @@
 .. title: NGC7331 y el Quinteto de Stephan
 .. slug: ngc7331-y-quinteto-de-stephan
 .. date: 2019-08-11 12:00:00 UTC+02:00
-.. tags: astronomía,galaxia,cumulo,fotografia
+.. tags: astronomía,galaxia,fotografía
 .. category: astrofotografía
 .. link: 
 .. description: 
 .. type: text
 .. status: 
 
-Siguiendo con las pruebas de la **Cámara nueva**, esta vez con unas cuantas galaxias.
+Siguiendo con las pruebas de la Atik 383L+, esta vez con unas cuantas galaxias.
+
+La de mayor tamaño es `NGC7331 <https://es.wikipedia.org/wiki/NGC_7331>`_, y a su alrededor se pueden ver un grupo de galaxias satélites de ésta. En la esquina inferior derecha se encuentra el `Quinteto de Stephan <https://es.wikipedia.org/wiki/Quinteto_de_Stephan>`_.
 
 |
 
@@ -19,9 +21,7 @@ Siguiendo con las pruebas de la **Cámara nueva**, esta vez con unas cuantas gal
 
 |
 
-La de mayor tamaño es **NGC7331**, y a su alrededor se pueden ver un grupo de galaxias satélites de ésta. En la esquina inferior derecha se encuentra el **Quinteto de Stephan**.
-
-La idea era realizar fotografías hasta acumular un total de 3 horas aproximadamente, ya que aunque NGC7331 tiene una magnitud aproximada de :math:`9.48`, relativamente brillante para una galaxia, las galaxias del Quinteto son mucho más débiles (magnitudes entre :math:`13` y :math:`16`) y pequeñas, por lo que necesitan mucha más luz para obtener detalles. Sin embargo, una serie de problemas que fueron surgiendo hicieron que sólo pudiera tomar 1 hora en total.
+La idea era realizar fotografías hasta acumular un total de 3 horas aproximadamente, ya que aunque NGC7331 tiene una `magnitud <https://es.wikipedia.org/wiki/Magnitud_(astronom%C3%ADa)>`_  aproximada de :math:`9.48`, relativamente brillante para una galaxia, las galaxias del Quinteto son mucho más débiles (magnitudes entre :math:`13` y :math:`16`) y pequeñas, por lo que necesitan mucha más luz para obtener detalles. Sin embargo, una serie de problemas que fueron surgiendo hicieron que sólo pudiera tomar 1 hora en total.
 
 Espero poder dedicarle otra noche para acumular más tomas y conseguir sacar más detalle.
 
