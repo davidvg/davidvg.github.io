@@ -6,7 +6,7 @@
 .. link: 
 .. description: 
 .. type: text
-.. status: draft
+.. status: 
 
 Movimiento
 ==========
