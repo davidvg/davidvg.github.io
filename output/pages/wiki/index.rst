@@ -8,5 +8,5 @@
 .. type: text
 .. status: 
 
-- `Vim - Atajos de teclado </pages>`_
+- `Vim - Atajos de teclado </pages/vim_keystrokes/index.html>`_
 - `Google <www.google.es>`_
