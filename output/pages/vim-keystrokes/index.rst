@@ -7,10 +7,6 @@
 .. description: 
 .. type: text
 
-Vim - Atajos de teclado
-=======================
-
-
 Movimientos
 -----------
 
@@ -18,3 +14,7 @@ Movimientos
 - :code:`Ctrl+b`: Retroceder una página completa
 - :code:`Ctrl+d`: Avanzar media página
 - :code:`Ctrl+u`: Retroceder media página
+
+
+Más cosas
+---------
