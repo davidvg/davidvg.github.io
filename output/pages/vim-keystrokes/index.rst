@@ -8,7 +8,7 @@
 .. type: text
 
 Movimientos
------------
+===========
 
 - :code:`Ctrl+f`: Avanzar una página completa
 - :code:`Ctrl+b`: Retroceder una página completa
@@ -16,5 +16,8 @@ Movimientos
 - :code:`Ctrl+u`: Retroceder media página
 
 
-Más cosas
----------
+Buffers
+=======
+
+- :code:`qa`: Grabar en el buffer :code:`a`.
+- :code:`@a`: Insertar el contenido del buffer :code:`a`.
