@@ -9,4 +9,4 @@
 .. type: text
 -->
 
-Escriba su página aquí.
+- [Vim - Atajos de teclado](/pages/vim-keystrokes/index.html)
