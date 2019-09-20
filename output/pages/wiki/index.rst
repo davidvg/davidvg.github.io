@@ -6,6 +6,6 @@
 .. link: 
 .. description: 
 .. type: text
-.. status: draft
+.. status: 
 
 - Vim - Atajos de teclado
