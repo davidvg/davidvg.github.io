@@ -7,6 +7,9 @@
 .. description: 
 .. type: text
 
+Vim - Atajos de teclado
+=======================
+
 
 Movimientos
 -----------
