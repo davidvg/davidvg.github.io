@@ -1,7 +1,7 @@
 .. title: Vim - Atajos de teclado
-.. slug: vim_keystrokes
+.. slug: vim-keystrokes
 .. date: 2019-09-20 19:08:37 UTC+02:00
-.. tags: vi
+.. tags: vi,tips
 .. category: 
 .. link: 
 .. description: 
