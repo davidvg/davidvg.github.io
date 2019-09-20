@@ -9,4 +9,4 @@
 .. type: text
 -->
 
-- [Vim - Atajos de teclado](/pages/wiki/vim-keystrokes/index.html)
+- [Vim - Atajos de teclado](/pages/vim-keystrokes/index.html)
