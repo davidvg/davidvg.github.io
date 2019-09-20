@@ -7,6 +7,14 @@
 .. description: 
 .. type: text
 
+
+Buffers
+=======
+
+- :code:`qa`: Grabar en el buffer :code:`a`.
+- :code:`@a`: Insertar el contenido del buffer :code:`a`.
+
+
 Movimientos
 ===========
 
@@ -15,9 +23,3 @@ Movimientos
 - :code:`Ctrl+d`: Avanzar media página
 - :code:`Ctrl+u`: Retroceder media página
 
-
-Buffers
-=======
-
-- :code:`qa`: Grabar en el buffer :code:`a`.
-- :code:`@a`: Insertar el contenido del buffer :code:`a`.
