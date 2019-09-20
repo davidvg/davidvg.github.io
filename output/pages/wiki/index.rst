@@ -9,4 +9,4 @@
 .. status: 
 
 - Vim - Atajos de teclado
-- `G... <www.google.es>`_
+- `Google <www.google.es>`_
