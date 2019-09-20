@@ -11,7 +11,7 @@
 Movimiento
 ==========
 
-- `Ctrl + f` - Avanzar una pantalla completa
-- `Ctrl + b` - Retroceder una pantalla completa
-- `Ctrl + d` - Avanzar media pantalla 
-- `Ctrl + u` - Retroceder media pantalla 
+- :code:`Ctrl + f` - Avanzar una pantalla completa
+- :code:`Ctrl + b` - Retroceder una pantalla completa
+- :code:`Ctrl + d` - Avanzar media pantalla 
+- :code:`Ctrl + u` - Retroceder media pantalla 
