@@ -9,7 +9,7 @@
 
 
 Movimientos
-===========
+-----------
 
 - :code:`Ctrl+f`: Avanzar una página completa
 - :code:`Ctrl+b`: Retroceder una página completa
