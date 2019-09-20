@@ -1,13 +1,11 @@
-<!--
 .. title: Wiki
 .. slug: wiki
-.. date: 2019-06-18 17:23:20 UTC+02:00
+.. date: 2019-09-20 20:02:00 UTC+02:00
 .. tags: 
 .. category: 
 .. link: 
 .. description: 
 .. type: text
 .. status: draft
--->
 
-Escriba su página aquí.
+- Vim - Atajos de teclado
