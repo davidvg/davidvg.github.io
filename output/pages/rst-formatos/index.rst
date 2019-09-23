@@ -1,20 +1,12 @@
-.. title: reStructuredText
-.. slug: restructuredtext
-.. date: 2019-09-20 23:27:29 UTC+02:00
+.. title: ReStructuredText - Formatos
+.. slug: rst-formatos
+.. date: 2019-09-23 20:00:23 UTC+02:00
 .. tags: 
 .. category: 
 .. link: 
 .. description: 
 .. type: text
 
-
-
-Formatos_
-
-
-
-
-.. _Formatos:
 
 Formatos
 ########
